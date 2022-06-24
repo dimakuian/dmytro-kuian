@@ -13,25 +13,31 @@ public class FirstBeanConfig {
         return new BeanA();
     }
 
-    @Bean(initMethod = "beanInit" , destroyMethod = "beanDestroy")
-    @DependsOn({"beanC","beanD"})
+    @Bean(initMethod = "beanInit", destroyMethod = "beanDestroy")
+    @DependsOn({"beanC", "beanD"})
     public BeanB beanB() {
         return new BeanB();
     }
 
-    @Bean(initMethod = "beanInit" , destroyMethod = "beanDestroy")
+    @Bean(initMethod = "beanInit", destroyMethod = "beanDestroy")
     @DependsOn("beanD")
     public BeanC beanC() {
         return new BeanC();
     }
 
-    @Bean(initMethod = "beanInit" , destroyMethod = "beanDestroy")
+    @Bean(initMethod = "beanInit", destroyMethod = "beanDestroy")
     public BeanD beanD() {
         return new BeanD();
     }
 
     @Bean
-    public BeanE beanE(){
+    public BeanE beanE() {
         return new BeanE();
+    }
+
+    @Bean
+    @Lazy
+    public BeanF beanF() {
+        return new BeanF();
     }
 }

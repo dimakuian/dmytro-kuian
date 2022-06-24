@@ -26,4 +26,8 @@ public class BeanB implements BeanInitializable,BeanDestroyable{
     public void beanInit() {
         System.out.println(this.getClass().getSimpleName() + " was init in beanInit method");
     }
+
+    public void secondBeanInit() {
+        System.out.println(this.getClass().getSimpleName() + " was init in secondBeanInit method");
+    }
 }
