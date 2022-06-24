@@ -1,9 +1,6 @@
 package com.epam.spring.homework2.config;
 
-import com.epam.spring.homework2.beans.BeanA;
-import com.epam.spring.homework2.beans.BeanB;
-import com.epam.spring.homework2.beans.BeanC;
-import com.epam.spring.homework2.beans.BeanD;
+import com.epam.spring.homework2.beans.*;
 import org.springframework.context.annotation.*;
 
 @Configuration
@@ -31,5 +28,10 @@ public class FirstBeanConfig {
     @Bean(initMethod = "beanInit" , destroyMethod = "beanDestroy")
     public BeanD beanD() {
         return new BeanD();
+    }
+
+    @Bean
+    public BeanE beanE(){
+        return new BeanE();
     }
 }
