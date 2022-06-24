@@ -14,11 +14,11 @@ public class BeanA extends AbstractBean implements InitializingBean, DisposableB
 
     @Override
     public void destroy() {
-        System.out.println(this.getClass().getSimpleName() + " was destroy with destroy method");
+        System.out.println(this.getClass().getSimpleName() + " was destroy in destroy method");
     }
 
     @Override
     public void afterPropertiesSet() {
-        System.out.println(this.getClass().getSimpleName() + " was initialize with afterPropertiesSet method");
+        System.out.println(this.getClass().getSimpleName() + " was initialize in afterPropertiesSet method");
     }
 }
