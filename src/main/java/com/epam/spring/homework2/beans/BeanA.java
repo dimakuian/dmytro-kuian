@@ -3,7 +3,7 @@ package com.epam.spring.homework2.beans;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-public class BeanA implements InitializingBean, DisposableBean {
+public class BeanA extends AbstractBean implements InitializingBean, DisposableBean {
     private String name;
     private int value;
 
@@ -16,12 +16,12 @@ public class BeanA implements InitializingBean, DisposableBean {
     }
 
     @Override
-    public void destroy() throws Exception {
+    public void destroy() {
         System.out.println(this.getClass().getSimpleName() + " was destroy with destroy method");
     }
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
         System.out.println(this.getClass().getSimpleName() + " was initialize with afterPropertiesSet method");
     }
 }

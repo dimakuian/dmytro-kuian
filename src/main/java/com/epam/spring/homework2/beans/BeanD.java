@@ -11,7 +11,7 @@ public class BeanD implements BeanInitializable, BeanDestroyable {
 
     @Override
     public String toString() {
-        return "BeanA{" +
+        return "BeanD{" +
                 "name='" + name + '\'' +
                 ", value=" + value +
                 '}';
@@ -26,4 +26,5 @@ public class BeanD implements BeanInitializable, BeanDestroyable {
     public void beanInit() {
         System.out.println(this.getClass().getSimpleName() + " was init in beanInit method");
     }
+
 }

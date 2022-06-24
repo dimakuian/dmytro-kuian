@@ -11,7 +11,7 @@ public class BeanC implements BeanInitializable,BeanDestroyable{
 
     @Override
     public String toString() {
-        return "BeanA{" +
+        return "BeanC{" +
                 "name='" + name + '\'' +
                 ", value=" + value +
                 '}';
