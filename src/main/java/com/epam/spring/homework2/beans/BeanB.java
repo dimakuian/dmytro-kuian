@@ -1,20 +1,12 @@
 package com.epam.spring.homework2.beans;
 
-import org.springframework.beans.factory.annotation.Value;
+public class BeanB extends AbstractBean implements BeanInitializable, BeanDestroyable {
 
-public class BeanB implements BeanInitializable,BeanDestroyable{
+    public BeanB(String name, int value) {
+        super(name, value);
+    }
 
-    @Value("${beanB.name}")
-    private String name;
-    @Value("${beanB.value}")
-    private int value;
-
-    @Override
-    public String toString() {
-        return "BeanB{" +
-                "name='" + name + '\'' +
-                ", value=" + value +
-                '}';
+    public BeanB() {
     }
 
     @Override

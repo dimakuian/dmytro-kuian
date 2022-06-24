@@ -4,15 +4,12 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
 public class BeanA extends AbstractBean implements InitializingBean, DisposableBean {
-    private String name;
-    private int value;
 
-    @Override
-    public String toString() {
-        return "BeanA{" +
-                "name='" + name + '\'' +
-                ", value=" + value +
-                '}';
+    public BeanA(String name, int value) {
+        super(name, value);
+    }
+
+    public BeanA() {
     }
 
     @Override

@@ -3,18 +3,14 @@ package com.epam.spring.homework2.beans;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-public class BeanE implements BeanInitializable, BeanDestroyable {
-    private String name;
-    private int value;
+public class BeanE extends AbstractBean implements BeanInitializable, BeanDestroyable {
 
-    @Override
-    public String toString() {
-        return "BeanE{" +
-                "name='" + name + '\'' +
-                ", value=" + value +
-                '}';
+    public BeanE(String name, int value) {
+        super(name, value);
     }
 
+    public BeanE() {
+    }
 
     @Override
     @PreDestroy

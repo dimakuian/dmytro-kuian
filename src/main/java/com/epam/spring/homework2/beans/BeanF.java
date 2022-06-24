@@ -1,14 +1,11 @@
 package com.epam.spring.homework2.beans;
 
-public class BeanF {
-    private String name;
-    private int value;
+public class BeanF extends AbstractBean {
 
-    @Override
-    public String toString() {
-        return "BeanA{" +
-                "name='" + name + '\'' +
-                ", value=" + value +
-                '}';
+    public BeanF(String name, int value) {
+        super(name, value);
+    }
+
+    public BeanF() {
     }
 }
