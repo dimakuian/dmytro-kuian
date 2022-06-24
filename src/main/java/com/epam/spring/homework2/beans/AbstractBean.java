@@ -6,11 +6,27 @@ public abstract class AbstractBean {
     private String name;
     private int value;
 
+    public AbstractBean(String name, int value) {
+        this.name = name;
+        this.value = value;
+    }
+
+    public AbstractBean() {
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + "{" +
+                "name='" + name + '\'' +
+                ", value=" + value +
+                '}';
+    }
+
     public void validate() {
-        if (this.name == null) {
+        if (name == null) {
             name = "not null now";
         }
-        if (this.value < 0) {
+        if (value <= 0) {
             value = new Random().nextInt(Integer.MAX_VALUE);
         }
     }
