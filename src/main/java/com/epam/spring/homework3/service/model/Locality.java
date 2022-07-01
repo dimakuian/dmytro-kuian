@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 public class Locality {
-
     private long id;
     private String city;
     private String street;
