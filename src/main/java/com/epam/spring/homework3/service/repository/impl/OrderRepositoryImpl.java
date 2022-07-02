@@ -37,7 +37,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public Order updateOrder(long id, Order order) {
-        log.info("Update order {}", order);
+        log.info("Update order for id {}", order);
         boolean isDeleted = list.removeIf(o -> o.getId().equals(id));
         if (isDeleted) {
             list.add(order);
@@ -49,6 +49,7 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     @Override
     public void deleteOrder(long id) {
+        log.info("Delete order for id {}", id);
         list.removeIf(o -> o.getId().equals(id));
     }
 }
