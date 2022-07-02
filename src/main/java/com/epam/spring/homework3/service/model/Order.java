@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class Order {
 
-    private long id;
+    private Long id;
     private long shippingAddressID;
     private long deliveryAddressID;
     private Timestamp creationTime;

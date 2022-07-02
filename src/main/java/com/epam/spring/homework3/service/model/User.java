@@ -3,13 +3,15 @@ package com.epam.spring.homework3.service.model;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @Builder
 @NoArgsConstructor
 public class User {
-    private long id;
+    private Long id;
     private String login;
+    @ToString.Exclude
     private String password;
     private int roleID;
     private String name;

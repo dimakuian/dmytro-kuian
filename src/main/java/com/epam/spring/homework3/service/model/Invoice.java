@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class Invoice {
 
-    private long id;
+    private Long id;
     private long clientID;
     private Timestamp creationDatetime;
     private long orderID;
