@@ -3,14 +3,14 @@ package com.epam.spring.homework3.controller.dto;
 
 import lombok.Data;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Data
 public class OrderDTO {
 
     private long shippingAddressID;
     private long deliveryAddressID;
-    private Timestamp creationTime;
+    private LocalDate creationTime;
     private long clientID;
     private String consignee;
     private String description;
@@ -22,6 +22,6 @@ public class OrderDTO {
     private double volume;
     private double fare;
     private long statusID;
-    private Timestamp deliveryDate;
+    private LocalDate deliveryDate;
 
 }

@@ -1,5 +1,6 @@
-package com.epam.spring.homework3.controller.dto;
+package com.epam.spring.homework3.controller;
 
+import com.epam.spring.homework3.controller.dto.InvoiceDTO;
 import com.epam.spring.homework3.service.InvoiceService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

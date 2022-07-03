@@ -2,12 +2,10 @@ package com.epam.spring.homework3.service.model;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
 @Builder
-@NoArgsConstructor
 public class User {
     private Long id;
     private String login;
