@@ -25,7 +25,7 @@ public class OrderController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "{id}")
+    @GetMapping(value = "/{id}")
     public OrderDTO getOrder(@PathVariable long id) {
         return orderService.getOrder(id);
     }

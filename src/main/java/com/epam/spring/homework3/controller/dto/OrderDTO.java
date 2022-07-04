@@ -1,32 +1,73 @@
 package com.epam.spring.homework3.controller.dto;
 
 
+import com.epam.spring.homework3.controller.dto.group.OnCreate;
+import com.epam.spring.homework3.controller.dto.group.OnUpdate;
 import lombok.Data;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import java.time.LocalDate;
+import javax.validation.constraints.*;
+import java.sql.Timestamp;
 
 @Data
 public class OrderDTO {
 
-    @NotBlank(message = "Id should not be empty!")
-    @Min(value = 0)
-    private long id;
-    private long shippingAddressID;
-    private long deliveryAddressID;
-    private LocalDate creationTime;
-    private long clientID;
+    @Null(groups = OnCreate.class, message = "'id' should be empty!")
+    @NotNull(groups = OnUpdate.class, message = "'id' should be not empty!")
+    private Long id;
+
+    @NotNull(message = "'shippingAddressID' should be not empty!")
+    private Long shippingAddressID;
+
+    @NotNull(message = "'deliveryAddressID' should be not empty!")
+    private Long deliveryAddressID;
+
+    @NotNull(message = "'creationTime' should be not empty!")
+    private Timestamp creationTime;
+
+    @NotNull(message = "'clientID' should be not empty!")
+    private Long clientID;
+
+    @NotBlank(message = "'consignee' should be not empty!")
+    @Size(min = 2)
     private String consignee;
+
+    @NotBlank(message = "'description' should be not empty!")
+    @Size(min = 2)
     private String description;
-    private double distance;
-    private double length;
-    private double height;
-    private double width;
-    private double weight;
-    private double volume;
-    private double fare;
-    private long statusID;
-    private LocalDate deliveryDate;
+
+    @NotNull(message = "'distance' should be not empty!")
+    @Positive(message = "'distance' should be positive!")
+    private Double distance;
+
+    @NotNull(message = "'length' should be not empty!")
+    @Positive(message = "'length' should be positive!")
+    private Double length;
+
+    @NotNull(message = "'height' should be not empty!")
+    @Positive(message = "'height' should be positive!")
+    private Double height;
+
+    @NotNull(message = "'width' should be not empty!")
+    @Positive(message = "'width' should be positive!")
+    private Double width;
+
+    @NotNull(message = "'weight' should be not empty!")
+    @Positive(message = "'weight' should be positive!")
+    private Double weight;
+
+    @NotNull(message = "'volume' should be not empty!")
+    @Positive(message = "'volume' should be positive!")
+    private Double volume;
+
+    @NotNull(message = "'fare' should be not empty!")
+    @Positive(message = "'fare' should be positive!")
+    private Double fare;
+
+    @NotNull(message = "'statusID' should be not empty!")
+    private Long statusID;
+
+    @Null(groups = OnCreate.class, message = "'statusID' should be not empty!")
+    @NotNull(groups = OnUpdate.class, message = "'statusID' should be not empty!")
+    private Timestamp deliveryDate;
 
 }

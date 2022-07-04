@@ -4,7 +4,7 @@ package com.epam.spring.homework3.service.model;
 import lombok.Builder;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 
 @Data
 @Builder
@@ -13,7 +13,7 @@ public class Order {
     private Long id;
     private long shippingAddressID;
     private long deliveryAddressID;
-    private LocalDate creationTime;
+    private Timestamp creationTime;
     private long clientID;
     private String consignee;
     private String description;
@@ -25,6 +25,6 @@ public class Order {
     private double volume;
     private double fare;
     private long statusID;
-    private LocalDate deliveryDate;
+    private Timestamp deliveryDate;
 
 }
