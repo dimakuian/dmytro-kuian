@@ -7,6 +7,7 @@ import lombok.ToString;
 @Data
 @Builder
 public class User {
+
     private Long id;
     private String login;
     @ToString.Exclude

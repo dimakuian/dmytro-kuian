@@ -2,11 +2,13 @@ package com.epam.spring.homework3.controller.dto;
 
 import com.epam.spring.homework3.controller.dto.group.OnCreate;
 import com.epam.spring.homework3.controller.dto.group.OnUpdate;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import javax.validation.constraints.*;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDTO {
 
     @Null(groups = OnCreate.class, message = "Id should be empty!")
@@ -39,6 +41,6 @@ public class UserDTO {
 
     @Null(groups = OnCreate.class, message = "Balance should be empty!")
     @NotNull(groups = OnUpdate.class, message = "Balance should not be empty!")
-    @Positive(groups = OnUpdate.class)
+    @PositiveOrZero(groups = OnUpdate.class)
     private Double balance;
 }
