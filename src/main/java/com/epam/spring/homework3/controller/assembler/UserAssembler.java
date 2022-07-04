@@ -19,13 +19,14 @@ public class UserAssembler extends RepresentationModelAssemblerSupport<UserDTO, 
     public static final String UPDATE_REL = "update_user";
     public static final String DELETE_REL = "delete_user";
 
-    public UserAssembler(Class<?> controllerClass, Class<UserModel> resourceType) {
-        super(controllerClass, resourceType);
+    public UserAssembler() {
+        super(UserController.class, UserModel.class);
     }
 
     @Override
     public UserModel toModel(UserDTO entity) {
         UserModel userModel = new UserModel(entity);
+
         Link get = linkTo(methodOn(UserController.class).getUser(entity.getId())).withRel(GET_REL);
         Link create = linkTo(methodOn(UserController.class).createUser(entity)).withRel(CREATE_REL);
         Link update = linkTo(methodOn(UserController.class).updateUser(entity.getId(), entity)).withRel(UPDATE_REL);

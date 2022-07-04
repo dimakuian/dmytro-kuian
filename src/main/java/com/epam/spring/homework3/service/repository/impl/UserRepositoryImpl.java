@@ -14,6 +14,7 @@ import java.util.List;
 public class UserRepositoryImpl implements UserRepository {
 
     private final List<User> list = new ArrayList<>();
+    private static long ID_COUNT = 0;
 
     @Override
     public User getUser(long id) {
@@ -32,6 +33,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Override
     public User createUser(User user) {
         log.info("Create user {}", user);
+        user.setId(++ID_COUNT);
         list.add(user);
         return user;
     }

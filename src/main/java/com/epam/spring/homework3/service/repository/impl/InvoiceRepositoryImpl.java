@@ -14,6 +14,7 @@ import java.util.List;
 public class InvoiceRepositoryImpl implements InvoiceRepository {
 
     private final List<Invoice> list = new ArrayList<>();
+    private static long ID_COUNT = 0;
 
     @Override
     public Invoice getInvoice(long id) {
@@ -32,6 +33,7 @@ public class InvoiceRepositoryImpl implements InvoiceRepository {
     @Override
     public Invoice createInvoice(Invoice invoice) {
         log.info("Create invoice {}", invoice);
+        invoice.setId(++ID_COUNT);
         list.add(invoice);
         return invoice;
     }

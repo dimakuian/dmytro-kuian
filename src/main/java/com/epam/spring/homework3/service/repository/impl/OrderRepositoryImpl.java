@@ -14,6 +14,7 @@ import java.util.List;
 public class OrderRepositoryImpl implements OrderRepository {
 
     private final List<Order> list = new ArrayList<>();
+    private static long ID_COUNT = 0;
 
     @Override
     public Order getOrder(long id) {
@@ -32,6 +33,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     @Override
     public Order createOrder(Order order) {
         log.info("Create order {}", order);
+        order.setId(++ID_COUNT);
         list.add(order);
         return order;
     }

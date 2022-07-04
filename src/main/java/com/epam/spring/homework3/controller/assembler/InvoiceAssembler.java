@@ -19,8 +19,8 @@ public class InvoiceAssembler extends RepresentationModelAssemblerSupport<Invoic
     public static final String UPDATE_REL = "update_invoice";
     public static final String DELETE_REL = "delete_invoice";
 
-    public InvoiceAssembler(Class<?> controllerClass, Class<InvoiceModel> resourceType) {
-        super(controllerClass, resourceType);
+    public InvoiceAssembler() {
+        super(InvoiceController.class, InvoiceModel.class);
     }
 
     @Override
