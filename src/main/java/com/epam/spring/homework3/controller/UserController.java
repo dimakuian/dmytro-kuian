@@ -1,11 +1,14 @@
 package com.epam.spring.homework3.controller;
 
 import com.epam.spring.homework3.controller.dto.UserDTO;
+import com.epam.spring.homework3.controller.dto.group.OnCreate;
+import com.epam.spring.homework3.controller.dto.group.OnUpdate;
 import com.epam.spring.homework3.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,13 +35,13 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping()
-    public UserDTO createUser(@RequestBody UserDTO userDto) {
+    public UserDTO createUser(@RequestBody @Validated(OnCreate.class) UserDTO userDto) {
         return userService.createUser(userDto);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/{id}")
-    public UserDTO updateUser(@PathVariable long id, @RequestBody UserDTO userDto) {
+    public UserDTO updateUser(@PathVariable long id, @RequestBody @Validated(OnUpdate.class) UserDTO userDto) {
         log.info("Update user by id {}", id);
         log.trace("Request body userDto {}", userDto);
         return userService.updateUser(id, userDto);
