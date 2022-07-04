@@ -1,5 +1,6 @@
 package com.epam.spring.homework3.service.repository.impl;
 
+import com.epam.spring.homework3.service.exception.EntityNotFoundException;
 import com.epam.spring.homework3.service.model.Invoice;
 import com.epam.spring.homework3.service.repository.InvoiceRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,7 @@ public class InvoiceRepositoryImpl implements InvoiceRepository {
         log.info("Get invoice for id {}", id);
         return list.stream().filter(invoice -> invoice.getId().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Invoice is not found!"));
+                .orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
@@ -42,7 +43,7 @@ public class InvoiceRepositoryImpl implements InvoiceRepository {
         if (isDeleted) {
             list.add(invoice);
         } else {
-            throw new RuntimeException("Invoice is not found!");
+            throw new EntityNotFoundException();
         }
         return invoice;
     }

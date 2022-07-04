@@ -1,5 +1,6 @@
 package com.epam.spring.homework3.service.repository.impl;
 
+import com.epam.spring.homework3.service.exception.EntityNotFoundException;
 import com.epam.spring.homework3.service.model.Order;
 import com.epam.spring.homework3.service.repository.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,7 @@ public class OrderRepositoryImpl implements OrderRepository {
         log.info("Get order for id {}", id);
         return list.stream().filter(o -> o.getId().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Order is not found"));
+                .orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
@@ -42,7 +43,7 @@ public class OrderRepositoryImpl implements OrderRepository {
         if (isDeleted) {
             list.add(order);
         } else {
-            throw new RuntimeException("Order is not found");
+            throw new EntityNotFoundException();
         }
         return order;
     }

@@ -1,5 +1,6 @@
 package com.epam.spring.homework3.service.repository.impl;
 
+import com.epam.spring.homework3.service.exception.EntityNotFoundException;
 import com.epam.spring.homework3.service.model.User;
 import com.epam.spring.homework3.service.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +20,7 @@ public class UserRepositoryImpl implements UserRepository {
         log.info("User get for id {}", id);
         return list.stream().filter(u -> u.getId().equals(id))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("User is not found"));
+                .orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
@@ -42,7 +43,7 @@ public class UserRepositoryImpl implements UserRepository {
         if (isDeleted) {
             list.add(user);
         } else {
-            throw new RuntimeException("User is not found");
+            throw new EntityNotFoundException();
         }
         return user;
     }
