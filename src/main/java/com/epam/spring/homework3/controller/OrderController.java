@@ -1,8 +1,10 @@
 package com.epam.spring.homework3.controller;
 
+import com.epam.spring.homework3.controller.assembler.OrderAssembler;
 import com.epam.spring.homework3.controller.dto.OrderDTO;
 import com.epam.spring.homework3.controller.dto.group.OnCreate;
 import com.epam.spring.homework3.controller.dto.group.OnUpdate;
+import com.epam.spring.homework3.controller.model.OrderModel;
 import com.epam.spring.homework3.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +22,7 @@ import java.util.List;
 public class OrderController {
 
     private final OrderService orderService;
+    private final OrderAssembler orderAssembler;
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
@@ -29,22 +32,25 @@ public class OrderController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/{id}")
-    public OrderDTO getOrder(@PathVariable long id) {
-        return orderService.getOrder(id);
+    public OrderModel getOrder(@PathVariable long id) {
+        OrderDTO outOrderDto = orderService.getOrder(id);
+        return orderAssembler.toModel(outOrderDto);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public OrderDTO createOrder(@RequestBody @Validated(OnCreate.class) OrderDTO orderDTO) {
-        return orderService.createOrder(orderDTO);
+    public OrderModel createOrder(@RequestBody @Validated(OnCreate.class) OrderDTO orderDTO) {
+        OrderDTO outOrderDto = orderService.createOrder(orderDTO);
+        return orderAssembler.toModel(outOrderDto);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping(value = "/{id}")
-    public OrderDTO updateOrder(@PathVariable long id, @RequestBody @Validated(OnUpdate.class) OrderDTO orderDTO) {
+    public OrderModel updateOrder(@PathVariable long id, @RequestBody @Validated(OnUpdate.class) OrderDTO orderDTO) {
         log.info("Update order by id {}", id);
         log.trace("Request body orderDTO {}", orderDTO);
-        return orderService.updateOrder(id, orderDTO);
+        OrderDTO outOrderDto = orderService.updateOrder(id, orderDTO);
+        return orderAssembler.toModel(outOrderDto);
     }
 
     @ResponseStatus(HttpStatus.OK)
