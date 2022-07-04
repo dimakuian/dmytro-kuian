@@ -1,11 +1,14 @@
 package com.epam.spring.homework3.controller;
 
 import com.epam.spring.homework3.controller.dto.OrderDTO;
+import com.epam.spring.homework3.controller.dto.group.OnCreate;
+import com.epam.spring.homework3.controller.dto.group.OnUpdate;
 import com.epam.spring.homework3.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,13 +35,13 @@ public class OrderController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public OrderDTO createOrder(@RequestBody OrderDTO orderDTO) {
+    public OrderDTO createOrder(@RequestBody @Validated(OnCreate.class) OrderDTO orderDTO) {
         return orderService.createOrder(orderDTO);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping(value = "/{id}")
-    public OrderDTO updateOrder(@PathVariable long id, @RequestBody OrderDTO orderDTO) {
+    public OrderDTO updateOrder(@PathVariable long id, @RequestBody @Validated(OnUpdate.class) OrderDTO orderDTO) {
         log.info("Update order by id {}", id);
         log.trace("Request body orderDTO {}", orderDTO);
         return orderService.updateOrder(id, orderDTO);
