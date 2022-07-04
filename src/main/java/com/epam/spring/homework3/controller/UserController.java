@@ -1,8 +1,10 @@
 package com.epam.spring.homework3.controller;
 
+import com.epam.spring.homework3.controller.assembler.UserAssembler;
 import com.epam.spring.homework3.controller.dto.UserDTO;
 import com.epam.spring.homework3.controller.dto.group.OnCreate;
 import com.epam.spring.homework3.controller.dto.group.OnUpdate;
+import com.epam.spring.homework3.controller.model.UserModel;
 import com.epam.spring.homework3.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +22,7 @@ import java.util.List;
 public class UserController {
 
     private final UserService userService;
+    private final UserAssembler userAssembler;
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping()
@@ -29,22 +32,26 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/{id}")
-    public UserDTO getUser(@PathVariable long id) {
-        return userService.getUser(id);
+    public UserModel getUser(@PathVariable long id) {
+        UserDTO userDTO = userService.getUser(id);
+        return userAssembler.toModel(userDTO);
     }
+
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping()
-    public UserDTO createUser(@RequestBody @Validated(OnCreate.class) UserDTO userDto) {
-        return userService.createUser(userDto);
+    public UserModel createUser(@RequestBody @Validated(OnCreate.class) UserDTO userDto) {
+        UserDTO outUserDTO = userService.createUser(userDto);
+        return userAssembler.toModel(outUserDTO);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/{id}")
-    public UserDTO updateUser(@PathVariable long id, @RequestBody @Validated(OnUpdate.class) UserDTO userDto) {
+    public UserModel updateUser(@PathVariable long id, @RequestBody @Validated(OnUpdate.class) UserDTO userDto) {
         log.info("Update user by id {}", id);
         log.trace("Request body userDto {}", userDto);
-        return userService.updateUser(id, userDto);
+        UserDTO outUserDTO = userService.updateUser(id, userDto);
+        return userAssembler.toModel(outUserDTO);
     }
 
     @ResponseStatus(HttpStatus.OK)
