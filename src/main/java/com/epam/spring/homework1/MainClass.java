@@ -8,12 +8,14 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class MainClass {
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(BeansConfig.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(BeansConfig.class);
 
         Pet pet = context.getBean(Pet.class);
         pet.printPets();
 
         Cheetah cheetah = context.getBean(Cheetah.class);
         Cheetah otherCheetah = (Cheetah) context.getBean("getOtherCheetah");
+        
+        context.close();
     }
 }
