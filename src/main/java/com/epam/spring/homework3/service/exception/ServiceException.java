@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 public class ServiceException extends RuntimeException {
+
     private ErrorType errorType;
 
     public ServiceException(String message) {

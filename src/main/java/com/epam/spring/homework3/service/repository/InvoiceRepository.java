@@ -1,12 +1,11 @@
 package com.epam.spring.homework3.service.repository;
 
 import com.epam.spring.homework3.service.model.Invoice;
-
 import java.util.List;
 
 public interface InvoiceRepository {
 
-    Invoice getInvoice(long id);
+  Invoice getInvoice(long id);
 
     List<Invoice> getInvoices();
 

@@ -2,10 +2,9 @@ package com.epam.spring.homework3.service.mapper;
 
 import com.epam.spring.homework3.controller.dto.InvoiceDTO;
 import com.epam.spring.homework3.service.model.Invoice;
+import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-
-import java.util.List;
 
 @Mapper
 public interface InvoiceMapper {

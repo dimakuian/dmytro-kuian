@@ -3,11 +3,10 @@ package com.epam.spring.homework3.service.repository.impl;
 import com.epam.spring.homework3.service.exception.EntityNotFoundException;
 import com.epam.spring.homework3.service.model.User;
 import com.epam.spring.homework3.service.repository.UserRepository;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
@@ -20,8 +19,8 @@ public class UserRepositoryImpl implements UserRepository {
     public User getUser(long id) {
         log.info("User get for id {}", id);
         return list.stream().filter(u -> u.getId().equals(id))
-                .findFirst()
-                .orElseThrow(EntityNotFoundException::new);
+            .findFirst()
+            .orElseThrow(EntityNotFoundException::new);
     }
 
     @Override

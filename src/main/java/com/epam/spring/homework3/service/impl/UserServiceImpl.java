@@ -5,11 +5,10 @@ import com.epam.spring.homework3.service.UserService;
 import com.epam.spring.homework3.service.mapper.UserMapper;
 import com.epam.spring.homework3.service.model.User;
 import com.epam.spring.homework3.service.repository.UserRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

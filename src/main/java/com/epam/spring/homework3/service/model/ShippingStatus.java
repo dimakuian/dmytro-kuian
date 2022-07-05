@@ -7,7 +7,7 @@ import lombok.Data;
 @Builder
 public class ShippingStatus {
 
-    private Long id;
-    private String name;
+  private Long id;
+  private String name;
 
 }

@@ -8,14 +8,14 @@ import lombok.ToString;
 @Builder
 public class User {
 
-    private Long id;
-    private String login;
-    @ToString.Exclude
-    private String password;
-    private int roleID;
-    private String name;
-    private String surname;
-    private String email;
-    private String phone;
-    private double balance;
+  private Long id;
+  private String login;
+  @ToString.Exclude
+  private String password;
+  private int roleID;
+  private String name;
+  private String surname;
+  private String email;
+  private String phone;
+  private double balance;
 }

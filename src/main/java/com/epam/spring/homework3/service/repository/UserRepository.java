@@ -1,17 +1,17 @@
 package com.epam.spring.homework3.service.repository;
 
 import com.epam.spring.homework3.service.model.User;
-
 import java.util.List;
 
 public interface UserRepository {
-    User getUser(long id);
 
-    List<User> listUsers();
+  User getUser(long id);
 
-    User createUser(User user);
+  List<User> listUsers();
 
-    User updateUser(long id, User user);
+  User createUser(User user);
 
-    void deleteUser(long id);
+  User updateUser(long id, User user);
+
+  void deleteUser(long id);
 }
