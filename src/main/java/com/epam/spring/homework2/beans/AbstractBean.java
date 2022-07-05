@@ -31,4 +31,5 @@ public abstract class AbstractBean {
       value = new Random().nextInt(Integer.MAX_VALUE);
     }
   }
+
 }
