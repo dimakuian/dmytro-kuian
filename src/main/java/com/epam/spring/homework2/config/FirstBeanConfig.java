@@ -9,6 +9,7 @@ import org.springframework.core.env.Environment;
 @Import(SecondBeanConfig.class)
 @PropertySource("classpath:application.properties")
 public class FirstBeanConfig {
+
     @Autowired
     private Environment env;
 
@@ -44,4 +45,5 @@ public class FirstBeanConfig {
     public BeanF beanF() {
         return new BeanF();
     }
+
 }
