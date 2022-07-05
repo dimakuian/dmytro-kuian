@@ -22,4 +22,5 @@ public class BeanB extends AbstractBean implements BeanInitializable, BeanDestro
   public void secondBeanInit() {
     System.out.println(this.getClass().getSimpleName() + " was init in secondBeanInit method");
   }
+
 }

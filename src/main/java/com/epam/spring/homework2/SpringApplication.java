@@ -18,5 +18,4 @@ public class SpringApplication {
 
     context.close();
   }
-
 }

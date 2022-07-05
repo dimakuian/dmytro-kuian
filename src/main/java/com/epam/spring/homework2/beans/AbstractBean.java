@@ -25,7 +25,7 @@ public abstract class AbstractBean {
 
   public void validate() {
     if (name == null) {
-      name = "not null now";
+      name = "default";
     }
     if (value <= 0) {
       value = new Random().nextInt(Integer.MAX_VALUE);
