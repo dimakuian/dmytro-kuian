@@ -18,4 +18,5 @@ public class BeanC extends AbstractBean implements BeanInitializable, BeanDestro
   public void beanInit() {
     System.out.println(this.getClass().getSimpleName() + " was init in beanInit method");
   }
+
 }

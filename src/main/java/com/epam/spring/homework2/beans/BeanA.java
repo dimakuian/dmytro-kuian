@@ -22,4 +22,5 @@ public class BeanA extends AbstractBean implements InitializingBean, DisposableB
     System.out.println(
         this.getClass().getSimpleName() + " was initialize in afterPropertiesSet method");
   }
+
 }

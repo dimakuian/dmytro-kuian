@@ -8,4 +8,5 @@ public class BeanF extends AbstractBean {
 
   public BeanF() {
   }
+
 }

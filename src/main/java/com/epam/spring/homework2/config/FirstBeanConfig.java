@@ -58,4 +58,5 @@ public class FirstBeanConfig {
   public BeanF beanF() {
     return new BeanF();
   }
+
 }
