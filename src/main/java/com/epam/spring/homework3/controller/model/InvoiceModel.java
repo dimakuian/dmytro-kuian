@@ -12,6 +12,6 @@ import org.springframework.hateoas.RepresentationModel;
 @AllArgsConstructor
 public class InvoiceModel extends RepresentationModel<InvoiceModel> {
 
-    @JsonUnwrapped
-    private InvoiceDTO invoiceDTO;
+  @JsonUnwrapped
+  private InvoiceDTO invoiceDTO;
 }
