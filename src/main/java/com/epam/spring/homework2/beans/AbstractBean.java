@@ -3,6 +3,7 @@ package com.epam.spring.homework2.beans;
 import java.util.Random;
 
 public abstract class AbstractBean {
+
     private String name;
     private int value;
 
