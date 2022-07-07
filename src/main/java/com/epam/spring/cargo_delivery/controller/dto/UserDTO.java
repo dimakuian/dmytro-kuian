@@ -2,6 +2,7 @@ package com.epam.spring.cargo_delivery.controller.dto;
 
 import com.epam.spring.cargo_delivery.controller.dto.group.OnCreate;
 import com.epam.spring.cargo_delivery.controller.dto.group.OnUpdate;
+import com.epam.spring.cargo_delivery.util.validation.unique.Unique;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -22,6 +23,7 @@ public class UserDTO {
 
   @NotBlank(message = "Login should not be empty!")
   @Size(min = 2)
+  @Unique(message = "This login exist", groups = OnCreate.class)
   private String login;
 
   @Null(groups = OnCreate.class, message = "Role id should be empty!")
