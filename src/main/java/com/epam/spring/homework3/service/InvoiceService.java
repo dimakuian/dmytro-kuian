@@ -2,6 +2,7 @@ package com.epam.spring.homework3.service;
 
 
 import com.epam.spring.homework3.controller.dto.InvoiceDTO;
+import com.epam.spring.homework3.service.model.enums.InvoiceStatus;
 import java.util.List;
 
 public interface InvoiceService {
