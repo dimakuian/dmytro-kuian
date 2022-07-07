@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@Api(tags = "Order management API")
+@Api(tags = "Invoice management API")
 @RequestMapping("api/v1/invoice")
 public interface InvoiceApi {
 
