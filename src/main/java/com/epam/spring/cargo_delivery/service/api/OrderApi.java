@@ -59,5 +59,4 @@ public interface OrderApi {
   @ResponseStatus(HttpStatus.OK)
   @DeleteMapping(value = "/{id}")
   ResponseEntity<Void> deleteOrder(@PathVariable long id);
-
 }
