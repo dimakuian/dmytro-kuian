@@ -23,7 +23,7 @@ public class SwaggerConfig {
     return new Docket(DocumentationType.SWAGGER_2)
         .groupName("api-V1")
         .select()
-        .apis(RequestHandlerSelectors.basePackage("com/epam/spring/cargo_delivery/controller"))
+        .apis(RequestHandlerSelectors.basePackage("com.epam.spring.cargo_delivery.controller"))
         .paths(PathSelectors.ant("/api/v1/**"))
         .build();
   }
