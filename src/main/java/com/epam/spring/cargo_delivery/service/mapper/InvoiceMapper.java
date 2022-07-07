@@ -9,11 +9,11 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface InvoiceMapper {
 
-    InvoiceMapper INSTANCE = Mappers.getMapper(InvoiceMapper.class);
+  InvoiceMapper INSTANCE = Mappers.getMapper(InvoiceMapper.class);
 
-    List<InvoiceDTO> mapInvoiceDtos(List<Invoice> invoices);
+  List<InvoiceDTO> mapInvoiceDtos(List<Invoice> invoices);
 
-    InvoiceDTO mapInvoiceDto(Invoice invoice);
+  InvoiceDTO mapInvoiceDto(Invoice invoice);
 
-    Invoice mapInvoice(InvoiceDTO invoiceDTO);
+  Invoice mapInvoice(InvoiceDTO invoiceDTO);
 }

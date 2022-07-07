@@ -13,5 +13,4 @@ public class Locality {
   private String streetNumber;
   private double latitude;
   private double longitude;
-
 }

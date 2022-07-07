@@ -7,11 +7,11 @@ public interface OrderService {
 
   OrderDTO getOrder(long id);
 
-    List<OrderDTO> getOrders();
+  List<OrderDTO> getOrders();
 
-    OrderDTO createOrder(OrderDTO orderDTO);
+  OrderDTO createOrder(OrderDTO orderDTO);
 
-    OrderDTO updateOrder(long id, OrderDTO orderDTO);
+  OrderDTO updateOrder(long id, OrderDTO orderDTO);
 
-    void deleteOrder(long id);
+  void deleteOrder(long id);
 }

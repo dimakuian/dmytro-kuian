@@ -23,5 +23,4 @@ public class TotalInvoiceInfoContributor implements InfoContributor {
 
     builder.withDetail("invoices", invoiceDetails);
   }
-
 }

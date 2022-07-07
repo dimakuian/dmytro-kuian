@@ -15,5 +15,4 @@ public interface InvoiceService {
   InvoiceDTO updateInvoice(long id, InvoiceDTO invoiceDTO);
 
   void deleteInvoice(long id);
-
 }

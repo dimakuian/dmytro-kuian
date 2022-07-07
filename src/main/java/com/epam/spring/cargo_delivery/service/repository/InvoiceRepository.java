@@ -17,5 +17,4 @@ public interface InvoiceRepository {
   void deleteInvoice(long id);
 
   long countInvoiceByStatus(InvoiceStatus invoiceStatus);
-
 }

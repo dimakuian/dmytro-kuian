@@ -34,5 +34,4 @@ public class SwaggerConfig {
     plugins.add(new CollectionJsonLinkDiscoverer());
     return new LinkDiscoverers(SimplePluginRegistry.create(plugins));
   }
-
 }

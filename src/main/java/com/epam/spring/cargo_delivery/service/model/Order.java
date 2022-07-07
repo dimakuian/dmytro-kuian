@@ -25,5 +25,4 @@ public class Order {
   private double fare;
   private long statusID;
   private Timestamp deliveryDate;
-
 }

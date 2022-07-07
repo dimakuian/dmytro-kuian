@@ -9,11 +9,11 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface OrderMapper {
 
-    OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
+  OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
 
-    List<OrderDTO> mapOrderDtos(List<Order> orders);
+  List<OrderDTO> mapOrderDtos(List<Order> orders);
 
-    OrderDTO mapOrderDto(Order order);
+  OrderDTO mapOrderDto(Order order);
 
-    Order mapOrder(OrderDTO orderDTO);
+  Order mapOrder(OrderDTO orderDTO);
 }

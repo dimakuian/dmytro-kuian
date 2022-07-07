@@ -12,6 +12,6 @@ import org.springframework.hateoas.RepresentationModel;
 @AllArgsConstructor
 public class OrderModel extends RepresentationModel<OrderModel> {
 
-    @JsonUnwrapped
-    private OrderDTO orderDTO;
+  @JsonUnwrapped
+  private OrderDTO orderDTO;
 }

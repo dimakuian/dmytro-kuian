@@ -59,5 +59,4 @@ public interface UserApi {
   @ResponseStatus(HttpStatus.OK)
   @DeleteMapping("/{id}")
   ResponseEntity<Void> deleteUser(@PathVariable long id);
-
 }

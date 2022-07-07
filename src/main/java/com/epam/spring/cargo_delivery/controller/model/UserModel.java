@@ -12,6 +12,6 @@ import org.springframework.hateoas.RepresentationModel;
 @AllArgsConstructor
 public class UserModel extends RepresentationModel<UserModel> {
 
-    @JsonUnwrapped
-    private UserDTO userDTO;
+  @JsonUnwrapped
+  private UserDTO userDTO;
 }

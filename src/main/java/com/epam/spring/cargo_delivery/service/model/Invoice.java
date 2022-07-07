@@ -14,5 +14,4 @@ public class Invoice {
   private long orderID;
   private double sum;
   private int invoiceStatusID;
-
 }

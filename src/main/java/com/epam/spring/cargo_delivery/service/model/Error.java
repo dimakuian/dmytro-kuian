@@ -12,5 +12,4 @@ public class Error {
   private String message;
   private ErrorType errorType;
   private LocalDateTime timestamp;
-
 }
