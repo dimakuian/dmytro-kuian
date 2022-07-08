@@ -17,37 +17,37 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDTO {
 
-  @Null(groups = OnCreate.class, message = "Id should be empty!")
-  @NotNull(groups = OnUpdate.class, message = "Id should not be empty!")
+  @Null(groups = OnCreate.class, message = "{common.id.empty}")
+  @NotNull(groups = OnUpdate.class, message = "{common.id.not_empty}")
   private Long id;
 
-  @NotBlank(message = "Login should not be empty!")
-  @Size(min = 2)
-  @Unique(message = "This login exist", groups = OnCreate.class)
+  @NotBlank(message = "{user.login.not_blank}")
+  @Size(min = 2, message = "{user.login.size}")
+  @Unique(groups = OnCreate.class, message = "{user.login.unique}")
   private String login;
 
-  @Null(groups = OnCreate.class, message = "Role id should be empty!")
-  @NotNull(groups = OnUpdate.class, message = "Role id should not be empty!")
+  @Null(groups = OnCreate.class, message = "{user.roleID.null}")
+  @NotNull(groups = OnUpdate.class, message = "{user.roleID.not_null}")
   private Integer roleID;
 
-  @NotBlank(message = "Name should not be empty!")
-  @Size(min = 2)
+  @NotBlank(message = "{user.name.not_blank}")
+  @Size(min = 2, message = "{user.name.size}")
   private String name;
 
-  @NotBlank(message = "Surname should not be empty!")
-  @Size(min = 2)
+  @NotBlank(message = "{user.surname.not_blank}")
+  @Size(min = 2, message = "{user.surname.size}")
   private String surname;
 
-  @NotBlank(message = "Email should not be empty!")
+  @NotBlank(message = "{user.email.not_blank}")
   @Email
   private String email;
 
-  @NotBlank
-  @Pattern(regexp = "^\\+(380)[0-9]{9}$", message = "Phone is not valid, example : +380671234567")
+  @NotBlank(message = "{user.phone.not_blank}")
+  @Pattern(regexp = "^\\+(380)[0-9]{9}$", message = "{user.phone.pattern}")
   private String phone;
 
-  @Null(groups = OnCreate.class, message = "Balance should be empty!")
-  @NotNull(groups = OnUpdate.class, message = "Balance should not be empty!")
-  @PositiveOrZero(groups = OnUpdate.class)
+  @Null(groups = OnCreate.class, message = "{user.balance.null}")
+  @NotNull(groups = OnUpdate.class, message = "{user.balance.not_null}")
+  @PositiveOrZero(groups = OnUpdate.class, message = "{user.balance.positive_or_zero}")
   private Double balance;
 }

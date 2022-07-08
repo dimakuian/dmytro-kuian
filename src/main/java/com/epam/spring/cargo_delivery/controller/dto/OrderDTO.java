@@ -14,62 +14,62 @@ import lombok.Data;
 @Data
 public class OrderDTO {
 
-  @Null(groups = OnCreate.class, message = "'id' should be empty!")
-  @NotNull(groups = OnUpdate.class, message = "'id' should be not empty!")
+  @Null(groups = OnCreate.class, message = "{common.id.empty}")
+  @NotNull(groups = OnUpdate.class, message = "{common.id.not_empty}")
   private Long id;
 
-  @NotNull(message = "'shippingAddressID' should be not empty!")
+  @NotNull(message = "{order.shippingAddressID.not_null}")
   private Long shippingAddressID;
 
-  @NotNull(message = "'deliveryAddressID' should be not empty!")
+  @NotNull(message = "{order.deliveryAddressID.not_null}")
   private Long deliveryAddressID;
 
-  @NotNull(message = "'creationTime' should be not empty!")
+  @NotNull(message = "{order.creationTime.not_null}")
   private Timestamp creationTime;
 
-  @NotNull(message = "'clientID' should be not empty!")
+  @NotNull(message = "{common.clientID.not_null}")
   private Long clientID;
 
-  @NotBlank(message = "'consignee' should be not empty!")
-  @Size(min = 2)
+  @NotBlank(message = "{order.consignee.not_null}")
+  @Size(min = 2, message = "{order.consignee.size}")
   private String consignee;
 
-  @NotBlank(message = "'description' should be not empty!")
-  @Size(min = 2)
+  @NotBlank(message = "{order.description.not_null}")
+  @Size(min = 2, message = "{order.description.size}")
   private String description;
 
-  @NotNull(message = "'distance' should be not empty!")
-  @Positive(message = "'distance' should be positive!")
+  @NotNull(message = "{order.distance.not_null}")
+  @Positive(message = "{order.distance.positive}")
   private Double distance;
 
-  @NotNull(message = "'length' should be not empty!")
-  @Positive(message = "'length' should be positive!")
+  @NotNull(message = "{order.length.not_null}")
+  @Positive(message = "{order.length.positive}")
   private Double length;
 
-  @NotNull(message = "'height' should be not empty!")
-  @Positive(message = "'height' should be positive!")
+  @NotNull(message = "{order.height.not_null}")
+  @Positive(message = "{order.height.positive}")
   private Double height;
 
-  @NotNull(message = "'width' should be not empty!")
-  @Positive(message = "'width' should be positive!")
+  @NotNull(message = "{order.width.not_null}")
+  @Positive(message = "{order.width.positive}")
   private Double width;
 
-  @NotNull(message = "'weight' should be not empty!")
-  @Positive(message = "'weight' should be positive!")
+  @NotNull(message = "{order.weight.not_null}")
+  @Positive(message = "{order.weight.positive}")
   private Double weight;
 
-  @NotNull(message = "'volume' should be not empty!")
-  @Positive(message = "'volume' should be positive!")
+  @NotNull(message = "{order.volume.not_null}")
+  @Positive(message = "{order.volume.positive}")
   private Double volume;
 
-  @NotNull(message = "'fare' should be not empty!")
-  @Positive(message = "'fare' should be positive!")
+  @NotNull(message = "{order.fare.not_null}")
+  @Positive(message = "{order.fare.positive}")
   private Double fare;
 
-  @NotNull(message = "'statusID' should be not empty!")
+  @NotNull(message = "{order.statusID.not_null}")
   private Long statusID;
 
-  @Null(groups = OnCreate.class, message = "'statusID' should be not empty!")
-  @NotNull(groups = OnUpdate.class, message = "'statusID' should be not empty!")
+  @Null(groups = OnCreate.class, message = "{order.deliveryDate.null}")
+  @NotNull(groups = OnUpdate.class, message = "{order.deliveryDate.not_null}")
   private Timestamp deliveryDate;
 }

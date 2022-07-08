@@ -13,22 +13,22 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class InvoiceDTO {
 
-  @Null(groups = OnCreate.class, message = "Id should be empty!")
-  @NotNull(groups = OnUpdate.class, message = "Id should be not empty!")
+  @Null(groups = OnCreate.class, message = "{common.id.empty}")
+  @NotNull(groups = OnUpdate.class, message = "{common.id.not_empty}")
   private Long id;
 
-  @NotNull(message = "Client id should be not empty!")
+  @NotNull(message = "{common.clientID.not_null}")
   private Long clientID;
 
-  @NotNull(message = "Creation date and time id should be not empty!")
+  @NotNull(message = "{invoice.creationDatetime.not_null}")
   private Timestamp creationDatetime;
 
-  @NotNull(message = "Order id should be not empty!")
+  @NotNull(message = "{invoice.orderID.not_null}")
   private Long orderID;
 
-  @Positive(message = "Sum should be positive")
+  @Positive(message = "{invoice.sum.positive}")
   private Double sum;
 
-  @NotNull(message = "Invoice status id should be not empty!")
+  @NotNull(message = "{invoice.invoiceStatusID.not_null}")
   private Integer invoiceStatusID;
 }
