@@ -2,6 +2,7 @@ package com.epam.spring.cargo_delivery.controller.dto;
 
 import com.epam.spring.cargo_delivery.controller.dto.group.OnCreate;
 import com.epam.spring.cargo_delivery.controller.dto.group.OnUpdate;
+import com.epam.spring.cargo_delivery.service.model.Role;
 import com.epam.spring.cargo_delivery.util.validation.unique.Unique;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import javax.validation.constraints.Email;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -26,9 +28,14 @@ public class UserDTO {
   @Unique(groups = OnCreate.class, message = "{user.login.unique}")
   private String login;
 
+  @NotBlank
+  @ToString.Exclude
+  @Pattern(regexp = "(?=^.{8,}$)(?=.*\\d)(?=.*[!@#$%^&*]+)(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).{8,24}$")
+  private String password;
+
   @Null(groups = OnCreate.class, message = "{user.roleID.null}")
   @NotNull(groups = OnUpdate.class, message = "{user.roleID.not_null}")
-  private Integer roleID;
+  private Role role;
 
   @NotBlank(message = "{user.name.not_blank}")
   @Size(min = 2, message = "{user.name.size}")

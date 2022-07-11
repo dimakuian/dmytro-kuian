@@ -3,6 +3,21 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
 
+  datasource:
+    url: jdbc:mysql://localhost:3306/delivery
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    defer-datasource-initialization: true
+
+  sql:
+    init:
+      mode: always
+
 management:
   endpoints:
     web:

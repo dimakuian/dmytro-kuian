@@ -1,17 +1,12 @@
 package com.epam.spring.cargo_delivery.service.repository;
 
 import com.epam.spring.cargo_delivery.service.model.User;
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository {
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
 
-  User getUser(long id);
+  boolean existsByEmail(String email);
 
-  List<User> listUsers();
-
-  User createUser(User user);
-
-  User updateUser(long id, User user);
-
-  void deleteUser(long id);
 }
