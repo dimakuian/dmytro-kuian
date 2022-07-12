@@ -4,7 +4,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import com.epam.spring.cargo_delivery.controller.OrderController;
-import com.epam.spring.cargo_delivery.controller.dto.DeliveryOrderDTO;
+import com.epam.spring.cargo_delivery.controller.dto.OrderDTO;
 import com.epam.spring.cargo_delivery.controller.model.OrderModel;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OrderAssembler extends
-    RepresentationModelAssemblerSupport<DeliveryOrderDTO, OrderModel> {
+    RepresentationModelAssemblerSupport<OrderDTO, OrderModel> {
 
   public static final String GET_REL = "get_order";
   public static final String CREATE_REL = "create_order";
@@ -25,7 +25,7 @@ public class OrderAssembler extends
   }
 
   @Override
-  public OrderModel toModel(DeliveryOrderDTO entity) {
+  public OrderModel toModel(OrderDTO entity) {
     OrderModel orderModel = new OrderModel(entity);
     Link get = linkTo(methodOn(OrderController.class).getOrder(entity.getId())).withRel(GET_REL);
     Link create = linkTo(methodOn(OrderController.class).createOrder(entity)).withRel(CREATE_REL);

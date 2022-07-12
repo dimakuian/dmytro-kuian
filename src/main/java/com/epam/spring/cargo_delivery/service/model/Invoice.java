@@ -34,11 +34,11 @@ public class Invoice {
 
   @OneToOne
   @JoinColumn(name = "order_id", referencedColumnName = "id")
-  private DeliveryOrder order;
+  private Order order;
 
   private double sum;
 
-  @ManyToOne
+  @ManyToOne()
   @JoinColumn(name = "invoice_status_id", referencedColumnName = "id")
   private InvoiceStatus invoiceStatus;
 }

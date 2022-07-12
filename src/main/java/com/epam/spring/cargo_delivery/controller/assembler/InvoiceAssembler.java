@@ -19,6 +19,7 @@ public class InvoiceAssembler extends
   public static final String CREATE_REL = "create_invoice";
   public static final String UPDATE_REL = "update_invoice";
   public static final String DELETE_REL = "delete_invoice";
+  public static final String PAY_REL = "pay_invoice";
 
   public InvoiceAssembler() {
     super(InvoiceController.class, InvoiceModel.class);
@@ -35,8 +36,10 @@ public class InvoiceAssembler extends
         .withRel(UPDATE_REL);
     Link delete = linkTo(methodOn(InvoiceController.class).deleteInvoice(entity.getId()))
         .withRel(DELETE_REL);
+    Link pay = linkTo(methodOn(InvoiceController.class).payInvoice(entity.getId(), entity))
+        .withRel(PAY_REL);
 
-    invoiceModel.add(get, create, update, delete);
+    invoiceModel.add(get, create, update, delete, pay);
     return invoiceModel;
   }
 }

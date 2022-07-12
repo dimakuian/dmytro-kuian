@@ -1,13 +1,14 @@
 package com.epam.spring.cargo_delivery.controller;
 
 import com.epam.spring.cargo_delivery.controller.assembler.OrderAssembler;
-import com.epam.spring.cargo_delivery.controller.dto.DeliveryOrderDTO;
+import com.epam.spring.cargo_delivery.controller.dto.OrderDTO;
 import com.epam.spring.cargo_delivery.controller.model.OrderModel;
 import com.epam.spring.cargo_delivery.service.OrderService;
 import com.epam.spring.cargo_delivery.service.api.OrderApi;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,28 +21,31 @@ public class OrderController implements OrderApi {
   private final OrderAssembler orderAssembler;
 
   @Override
-  public List<DeliveryOrderDTO> getAllOrders() {
-    return orderService.getOrders();
+  public Page<OrderDTO> getAllOrders(Pageable pageable) {
+    log.info("Get all orders with pageable {}", pageable);
+    return orderService.getOrders(pageable);
   }
 
   @Override
   public OrderModel getOrder(long id) {
-    DeliveryOrderDTO outDeliveryOrderDto = orderService.getOrder(id);
-    return orderAssembler.toModel(outDeliveryOrderDto);
+    log.info("Get order with id {}", id);
+    OrderDTO outOrderDto = orderService.getOrder(id);
+    return orderAssembler.toModel(outOrderDto);
   }
 
   @Override
-  public OrderModel createOrder(DeliveryOrderDTO deliveryOrderDTO) {
-    DeliveryOrderDTO outDeliveryOrderDto = orderService.createOrder(deliveryOrderDTO);
-    return orderAssembler.toModel(outDeliveryOrderDto);
+  public OrderModel createOrder(OrderDTO orderDTO) {
+    log.info("Create order {}", orderDTO);
+    OrderDTO outOrderDto = orderService.createOrder(orderDTO);
+    return orderAssembler.toModel(outOrderDto);
   }
 
   @Override
-  public OrderModel updateOrder(long id, DeliveryOrderDTO deliveryOrderDTO) {
+  public OrderModel updateOrder(long id, OrderDTO orderDTO) {
     log.info("Update order by id {}", id);
-    log.trace("Request body orderDTO {}", deliveryOrderDTO);
-    DeliveryOrderDTO outDeliveryOrderDto = orderService.updateOrder(id, deliveryOrderDTO);
-    return orderAssembler.toModel(outDeliveryOrderDto);
+    log.trace("Request body orderDTO {}", orderDTO);
+    OrderDTO outOrderDto = orderService.updateOrder(id, orderDTO);
+    return orderAssembler.toModel(outOrderDto);
   }
 
   @Override

@@ -15,7 +15,7 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class DeliveryOrderDTO {
+public class OrderDTO {
 
   @Null(groups = OnCreate.class, message = "{common.id.empty}")
   @NotNull(groups = OnUpdate.class, message = "{common.id.not_empty}")

@@ -1,17 +1,18 @@
 package com.epam.spring.cargo_delivery.service;
 
-import com.epam.spring.cargo_delivery.controller.dto.DeliveryOrderDTO;
-import java.util.List;
+import com.epam.spring.cargo_delivery.controller.dto.OrderDTO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface OrderService {
 
-  DeliveryOrderDTO getOrder(long id);
+  OrderDTO getOrder(long id);
 
-  List<DeliveryOrderDTO> getOrders();
+  Page<OrderDTO> getOrders(Pageable pageable);
 
-  DeliveryOrderDTO createOrder(DeliveryOrderDTO deliveryOrderDTO);
+  OrderDTO createOrder(OrderDTO orderDTO);
 
-  DeliveryOrderDTO updateOrder(long id, DeliveryOrderDTO deliveryOrderDTO);
+  OrderDTO updateOrder(long id, OrderDTO orderDTO);
 
   void deleteOrder(long id);
 }

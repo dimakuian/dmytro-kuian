@@ -5,9 +5,10 @@ import com.epam.spring.cargo_delivery.controller.dto.InvoiceDTO;
 import com.epam.spring.cargo_delivery.controller.model.InvoiceModel;
 import com.epam.spring.cargo_delivery.service.InvoiceService;
 import com.epam.spring.cargo_delivery.service.api.InvoiceApi;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,18 +21,21 @@ public class InvoiceController implements InvoiceApi {
   private final InvoiceAssembler invoiceAssembler;
 
   @Override
-  public List<InvoiceDTO> getAllInvoice() {
-    return invoiceService.getInvoices();
+  public Page<InvoiceDTO> getAllInvoice(Pageable pageable) {
+    log.info("Get all invoices with pageable {}", pageable);
+    return invoiceService.getInvoices(pageable);
   }
 
   @Override
   public InvoiceModel getInvoice(long id) {
+    log.info("Get invoice with id {}", id);
     InvoiceDTO outInvoiceDto = invoiceService.getInvoice(id);
     return invoiceAssembler.toModel(outInvoiceDto);
   }
 
   @Override
   public InvoiceModel createInvoice(InvoiceDTO invoiceDTO) {
+    log.info("Create invoice {}", invoiceDTO);
     InvoiceDTO outInvoiceDto = invoiceService.createInvoice(invoiceDTO);
     return invoiceAssembler.toModel(outInvoiceDto);
   }
@@ -49,5 +53,13 @@ public class InvoiceController implements InvoiceApi {
     log.info("Delete invoice by id {}", id);
     invoiceService.deleteInvoice(id);
     return ResponseEntity.noContent().build();
+  }
+
+  @Override
+  public InvoiceModel payInvoice(long id, InvoiceDTO invoiceDTO) {
+    log.info("Pay invoice by id {}", id);
+    log.trace("Request body invoiceDTO {}", invoiceDTO);
+    InvoiceDTO outInvoiceDto = invoiceService.payInvoice(id, invoiceDTO);
+    return invoiceAssembler.toModel(outInvoiceDto);
   }
 }

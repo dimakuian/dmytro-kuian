@@ -1,13 +1,14 @@
 package com.epam.spring.cargo_delivery.service;
 
 import com.epam.spring.cargo_delivery.controller.dto.UserDTO;
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface UserService {
 
   UserDTO getUser(long id);
 
-  List<UserDTO> listUsers();
+  Page<UserDTO> listUsers(Pageable pageable);
 
   UserDTO createUser(UserDTO userDTO);
 

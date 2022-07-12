@@ -1,8 +1,8 @@
 package com.epam.spring.cargo_delivery.util;
 
-import com.epam.spring.cargo_delivery.service.model.Invoice;
-import com.epam.spring.cargo_delivery.service.model.InvoiceStatus;
+import com.epam.spring.cargo_delivery.controller.dto.InvoiceStatusDTO;
 import com.epam.spring.cargo_delivery.service.repository.InvoiceRepository;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
@@ -18,10 +18,10 @@ public class TotalInvoiceInfoContributor implements InfoContributor {
 
   @Override
   public void contribute(Builder builder) {
-    Map<String, Long> invoiceDetails = invoiceRepository.getInvoices().stream()
-        .map(Invoice::getInvoiceStatus)
-        .distinct()
-        .collect(Collectors.toMap(InvoiceStatus::getName, invoiceRepository::countInvoiceByStatus));
+    Map<String, Long> invoiceDetails = Arrays.stream(InvoiceStatusDTO.values())
+        .map(s -> s.name().toLowerCase())
+        .collect(Collectors.toMap(String::toLowerCase,
+            invoiceRepository::countAllByInvoiceStatusName));
 
     builder.withDetail("invoices", invoiceDetails);
   }

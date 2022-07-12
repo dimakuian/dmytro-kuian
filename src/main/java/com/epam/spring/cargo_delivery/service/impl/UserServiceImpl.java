@@ -9,9 +9,10 @@ import com.epam.spring.cargo_delivery.service.model.User;
 import com.epam.spring.cargo_delivery.service.repository.RoleRepository;
 import com.epam.spring.cargo_delivery.service.repository.UserRepository;
 import java.math.BigDecimal;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -30,10 +31,9 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
-  public List<UserDTO> listUsers() {
+  public Page<UserDTO> listUsers(Pageable pageable) {
     log.info("Getting all users");
-    List<User> users = userRepository.findAll();
-    return UserMapper.INSTANCE.mapUserDtos(users);
+    return userRepository.findAll(pageable).map(UserMapper.INSTANCE::mapUserDto);
   }
 
   @Override

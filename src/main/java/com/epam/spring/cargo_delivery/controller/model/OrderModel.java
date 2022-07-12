@@ -1,6 +1,6 @@
 package com.epam.spring.cargo_delivery.controller.model;
 
-import com.epam.spring.cargo_delivery.controller.dto.DeliveryOrderDTO;
+import com.epam.spring.cargo_delivery.controller.dto.OrderDTO;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,5 +13,5 @@ import org.springframework.hateoas.RepresentationModel;
 public class OrderModel extends RepresentationModel<OrderModel> {
 
   @JsonUnwrapped
-  private DeliveryOrderDTO deliveryOrderDTO;
+  private OrderDTO orderDTO;
 }

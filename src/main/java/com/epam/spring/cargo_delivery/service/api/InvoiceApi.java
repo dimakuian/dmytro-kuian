@@ -8,7 +8,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -28,7 +29,7 @@ public interface InvoiceApi {
   @ApiOperation("Get all invoice")
   @ResponseStatus(HttpStatus.OK)
   @GetMapping
-  List<InvoiceDTO> getAllInvoice();
+  Page<InvoiceDTO> getAllInvoice(Pageable pageable);
 
   @ApiImplicitParams({
       @ApiImplicitParam(name = "id", paramType = "path", required = true, value = "Invoice id")
@@ -59,4 +60,13 @@ public interface InvoiceApi {
   @ResponseStatus(HttpStatus.OK)
   @DeleteMapping(value = "/{id}")
   ResponseEntity<Void> deleteInvoice(@PathVariable long id);
+
+  @ApiImplicitParams({
+      @ApiImplicitParam(name = "id", paramType = "path", required = true, value = "Invoice id")
+  })
+  @ApiOperation("Pay invoice")
+  @ResponseStatus(HttpStatus.OK)
+  @PatchMapping(value = "/{id}/pay")
+  InvoiceModel payInvoice(@PathVariable long id,
+      @RequestBody @Validated(OnUpdate.class) InvoiceDTO invoiceDTO);
 }

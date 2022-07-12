@@ -6,9 +6,10 @@ import com.epam.spring.cargo_delivery.controller.dto.group.OnUpdate;
 import com.epam.spring.cargo_delivery.controller.model.UserModel;
 import com.epam.spring.cargo_delivery.service.UserService;
 import com.epam.spring.cargo_delivery.service.api.UserApi;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,19 +24,21 @@ public class UserController implements UserApi {
   private final UserAssembler userAssembler;
 
   @Override
-  public List<UserDTO> getAllUsers() {
-    return userService.listUsers();
+  public Page<UserDTO> getAllUsers(Pageable pageable) {
+    log.info("Get all users with pageable {}", pageable);
+    return userService.listUsers(pageable);
   }
 
   @Override
   public UserModel getUser(long id) {
+    log.info("Get user with id {}", id);
     UserDTO userDTO = userService.getUser(id);
     return userAssembler.toModel(userDTO);
   }
 
-
   @Override
   public UserModel createUser(UserDTO userDto) {
+    log.info("Create order {}", userDto);
     UserDTO outUserDTO = userService.createUser(userDto);
     return userAssembler.toModel(outUserDTO);
   }

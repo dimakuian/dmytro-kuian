@@ -1,6 +1,6 @@
 package com.epam.spring.cargo_delivery.service.api;
 
-import com.epam.spring.cargo_delivery.controller.dto.DeliveryOrderDTO;
+import com.epam.spring.cargo_delivery.controller.dto.OrderDTO;
 import com.epam.spring.cargo_delivery.controller.dto.group.OnCreate;
 import com.epam.spring.cargo_delivery.controller.dto.group.OnUpdate;
 import com.epam.spring.cargo_delivery.controller.model.OrderModel;
@@ -8,7 +8,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -28,7 +29,7 @@ public interface OrderApi {
   @ApiOperation("Get all order")
   @ResponseStatus(HttpStatus.OK)
   @GetMapping
-  List<DeliveryOrderDTO> getAllOrders();
+  Page<OrderDTO> getAllOrders(Pageable pageable);
 
   @ApiImplicitParams({
       @ApiImplicitParam(name = "id", paramType = "path", required = true, value = "Order id")
@@ -41,7 +42,7 @@ public interface OrderApi {
   @ApiOperation("Create order")
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping
-  OrderModel createOrder(@RequestBody @Validated(OnCreate.class) DeliveryOrderDTO deliveryOrderDTO);
+  OrderModel createOrder(@RequestBody @Validated(OnCreate.class) OrderDTO orderDTO);
 
   @ApiImplicitParams({
       @ApiImplicitParam(name = "id", paramType = "path", required = true, value = "Order id")
@@ -50,7 +51,7 @@ public interface OrderApi {
   @ResponseStatus(HttpStatus.OK)
   @PatchMapping(value = "/{id}")
   OrderModel updateOrder(@PathVariable long id,
-      @RequestBody @Validated(OnUpdate.class) DeliveryOrderDTO deliveryOrderDTO);
+      @RequestBody @Validated(OnUpdate.class) OrderDTO orderDTO);
 
   @ApiImplicitParams({
       @ApiImplicitParam(name = "id", paramType = "path", required = true, value = "Order id")
