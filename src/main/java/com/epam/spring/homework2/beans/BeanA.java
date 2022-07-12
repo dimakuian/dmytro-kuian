@@ -5,20 +5,21 @@ import org.springframework.beans.factory.InitializingBean;
 
 public class BeanA extends AbstractBean implements InitializingBean, DisposableBean {
 
-    public BeanA(String name, int value) {
-        super(name, value);
-    }
+  public BeanA(String name, int value) {
+    super(name, value);
+  }
 
-    public BeanA() {
-    }
+  public BeanA() {
+  }
 
-    @Override
-    public void destroy() {
-        System.out.println(this.getClass().getSimpleName() + " was destroy in destroy method");
-    }
+  @Override
+  public void destroy() {
+    System.out.println(this.getClass().getSimpleName() + " was destroy in destroy method");
+  }
 
-    @Override
-    public void afterPropertiesSet() {
-        System.out.println(this.getClass().getSimpleName() + " was initialize in afterPropertiesSet method");
-    }
+  @Override
+  public void afterPropertiesSet() {
+    System.out.println(
+        this.getClass().getSimpleName() + " was initialize in afterPropertiesSet method");
+  }
 }
