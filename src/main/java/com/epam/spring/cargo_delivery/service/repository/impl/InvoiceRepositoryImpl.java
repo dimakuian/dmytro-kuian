@@ -2,7 +2,7 @@ package com.epam.spring.cargo_delivery.service.repository.impl;
 
 import com.epam.spring.cargo_delivery.service.exception.EntityNotFoundException;
 import com.epam.spring.cargo_delivery.service.model.Invoice;
-import com.epam.spring.cargo_delivery.service.model.enums.InvoiceStatus;
+import com.epam.spring.cargo_delivery.service.model.InvoiceStatus;
 import com.epam.spring.cargo_delivery.service.repository.InvoiceRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +60,7 @@ public class InvoiceRepositoryImpl implements InvoiceRepository {
   public long countInvoiceByStatus(InvoiceStatus invoiceStatus) {
     log.info("Count invoice by status {}", invoiceStatus.getName());
     return list.stream()
-        .filter(invoice -> invoice.getInvoiceStatusID() == invoiceStatus.ordinal())
+        .filter(invoice -> invoice.getInvoiceStatus().equals(invoiceStatus))
         .count();
   }
 }

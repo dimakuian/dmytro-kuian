@@ -1,17 +1,17 @@
 package com.epam.spring.cargo_delivery.service;
 
-import com.epam.spring.cargo_delivery.controller.dto.OrderDTO;
+import com.epam.spring.cargo_delivery.controller.dto.DeliveryOrderDTO;
 import java.util.List;
 
 public interface OrderService {
 
-  OrderDTO getOrder(long id);
+  DeliveryOrderDTO getOrder(long id);
 
-  List<OrderDTO> getOrders();
+  List<DeliveryOrderDTO> getOrders();
 
-  OrderDTO createOrder(OrderDTO orderDTO);
+  DeliveryOrderDTO createOrder(DeliveryOrderDTO deliveryOrderDTO);
 
-  OrderDTO updateOrder(long id, OrderDTO orderDTO);
+  DeliveryOrderDTO updateOrder(long id, DeliveryOrderDTO deliveryOrderDTO);
 
   void deleteOrder(long id);
 }

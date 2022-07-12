@@ -2,6 +2,8 @@ package com.epam.spring.cargo_delivery.controller.dto;
 
 import com.epam.spring.cargo_delivery.controller.dto.group.OnCreate;
 import com.epam.spring.cargo_delivery.controller.dto.group.OnUpdate;
+import com.epam.spring.cargo_delivery.service.model.DeliveryOrder;
+import com.epam.spring.cargo_delivery.service.model.InvoiceStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import java.sql.Timestamp;
 import javax.validation.constraints.NotNull;
@@ -24,11 +26,11 @@ public class InvoiceDTO {
   private Timestamp creationDatetime;
 
   @NotNull(message = "{invoice.orderID.not_null}")
-  private Long orderID;
+  private DeliveryOrder deliveryOrder;
 
   @Positive(message = "{invoice.sum.positive}")
   private Double sum;
 
   @NotNull(message = "{invoice.invoiceStatusID.not_null}")
-  private Integer invoiceStatusID;
+  private InvoiceStatus invoiceStatus;
 }

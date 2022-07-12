@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "shipping_status")
-public class ShippingStatus {
+@Table(name = "invoice_status")
+public class InvoiceStatus {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)

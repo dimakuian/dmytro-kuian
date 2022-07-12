@@ -11,16 +11,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "shipping_status")
-public class ShippingStatus {
+@Table(name = "language")
+public class Language {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private long id;
 
-  private String name;
+  private String shortName;
+
+  private String fullName;
 }

@@ -1,10 +1,15 @@
 package com.epam.spring.cargo_delivery.service.impl;
 
-import com.epam.spring.cargo_delivery.controller.dto.OrderDTO;
+import com.epam.spring.cargo_delivery.controller.dto.DeliveryOrderDTO;
+import com.epam.spring.cargo_delivery.controller.dto.ShippingStatusDTO;
 import com.epam.spring.cargo_delivery.service.OrderService;
-import com.epam.spring.cargo_delivery.service.mapper.OrderMapper;
-import com.epam.spring.cargo_delivery.service.model.Order;
+import com.epam.spring.cargo_delivery.service.exception.EntityNotFoundException;
+import com.epam.spring.cargo_delivery.service.mapper.DeliveryOrderMapper;
+import com.epam.spring.cargo_delivery.service.model.DeliveryOrder;
 import com.epam.spring.cargo_delivery.service.repository.OrderRepository;
+import com.epam.spring.cargo_delivery.service.repository.ShippingStatusRepository;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,40 +21,61 @@ import org.springframework.stereotype.Service;
 public class OrderServiceImpl implements OrderService {
 
   private final OrderRepository orderRepository;
+  private final ShippingStatusRepository shippingStatusRepository;
 
   @Override
-  public OrderDTO getOrder(long id) {
-    log.info("Get order by id {}", id);
-    Order order = orderRepository.getOrder(id);
-    return OrderMapper.INSTANCE.mapOrderDto(order);
+  public DeliveryOrderDTO getOrder(long id) {
+    log.info("Start getting delivery order by id {}", id);
+    DeliveryOrder order = orderRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+    log.info("Finish getting delivery order by id {}", id);
+    return DeliveryOrderMapper.INSTANCE.mapOrderDto(order);
   }
 
   @Override
-  public List<OrderDTO> getOrders() {
-    log.info("Get all orders");
-    List<Order> orders = orderRepository.getOrders();
-    return OrderMapper.INSTANCE.mapOrderDtos(orders);
+  public List<DeliveryOrderDTO> getOrders() {
+    log.info("Getting all orders");
+    List<DeliveryOrder> orders = orderRepository.findAll();
+    return DeliveryOrderMapper.INSTANCE.mapOrderDtos(orders);
   }
 
   @Override
-  public OrderDTO createOrder(OrderDTO orderDTO) {
-    log.info("Create order {}", orderDTO);
-    Order order = OrderMapper.INSTANCE.mapOrder(orderDTO);
-    order = orderRepository.createOrder(order);
-    return OrderMapper.INSTANCE.mapOrderDto(order);
+  public DeliveryOrderDTO createOrder(DeliveryOrderDTO deliveryOrderDTO) {
+    log.info("Start creating order {}", deliveryOrderDTO);
+    deliveryOrderDTO.setCreationTime(Timestamp.valueOf(LocalDateTime.now()));
+
+    deliveryOrderDTO.setShippingStatus(
+        shippingStatusRepository
+            .findByName(ShippingStatusDTO.CREATED.name())
+            .orElseThrow(RuntimeException::new));
+
+    DeliveryOrder order = DeliveryOrderMapper.INSTANCE.mapOrder(deliveryOrderDTO);
+    order = orderRepository.save(order);
+
+    log.info("Finish creating order {}", deliveryOrderDTO);
+    return DeliveryOrderMapper.INSTANCE.mapOrderDto(order);
   }
 
   @Override
-  public OrderDTO updateOrder(long id, OrderDTO orderDTO) {
-    log.info("Update order for id {}", id);
-    Order order = OrderMapper.INSTANCE.mapOrder(orderDTO);
-    order = orderRepository.updateOrder(id, order);
-    return OrderMapper.INSTANCE.mapOrderDto(order);
+  public DeliveryOrderDTO updateOrder(long id, DeliveryOrderDTO deliveryOrderDTO) {
+    log.info("Start updating order for id {}", id);
+
+    if (!orderRepository.existsById(id)) {
+      throw new EntityNotFoundException();
+    }
+
+    DeliveryOrder order = DeliveryOrderMapper.INSTANCE.mapOrder(deliveryOrderDTO);
+    order = orderRepository.save(order);
+    log.info("Finish updating order for id {}", id);
+    return DeliveryOrderMapper.INSTANCE.mapOrderDto(order);
   }
 
   @Override
   public void deleteOrder(long id) {
-    log.info("Delete order for id {}", id);
-    orderRepository.deleteOrder(id);
+    log.info("Start deleting order for id {}", id);
+    if (!orderRepository.existsById(id)) {
+      throw new EntityNotFoundException();
+    }
+    orderRepository.deleteById(id);
+    log.info("Deleted order by id {}", id);
   }
 }

@@ -1,7 +1,7 @@
 package com.epam.spring.cargo_delivery.controller;
 
 import com.epam.spring.cargo_delivery.controller.assembler.OrderAssembler;
-import com.epam.spring.cargo_delivery.controller.dto.OrderDTO;
+import com.epam.spring.cargo_delivery.controller.dto.DeliveryOrderDTO;
 import com.epam.spring.cargo_delivery.controller.model.OrderModel;
 import com.epam.spring.cargo_delivery.service.OrderService;
 import com.epam.spring.cargo_delivery.service.api.OrderApi;
@@ -20,28 +20,28 @@ public class OrderController implements OrderApi {
   private final OrderAssembler orderAssembler;
 
   @Override
-  public List<OrderDTO> getAllOrders() {
+  public List<DeliveryOrderDTO> getAllOrders() {
     return orderService.getOrders();
   }
 
   @Override
   public OrderModel getOrder(long id) {
-    OrderDTO outOrderDto = orderService.getOrder(id);
-    return orderAssembler.toModel(outOrderDto);
+    DeliveryOrderDTO outDeliveryOrderDto = orderService.getOrder(id);
+    return orderAssembler.toModel(outDeliveryOrderDto);
   }
 
   @Override
-  public OrderModel createOrder(OrderDTO orderDTO) {
-    OrderDTO outOrderDto = orderService.createOrder(orderDTO);
-    return orderAssembler.toModel(outOrderDto);
+  public OrderModel createOrder(DeliveryOrderDTO deliveryOrderDTO) {
+    DeliveryOrderDTO outDeliveryOrderDto = orderService.createOrder(deliveryOrderDTO);
+    return orderAssembler.toModel(outDeliveryOrderDto);
   }
 
   @Override
-  public OrderModel updateOrder(long id, OrderDTO orderDTO) {
+  public OrderModel updateOrder(long id, DeliveryOrderDTO deliveryOrderDTO) {
     log.info("Update order by id {}", id);
-    log.trace("Request body orderDTO {}", orderDTO);
-    OrderDTO outOrderDto = orderService.updateOrder(id, orderDTO);
-    return orderAssembler.toModel(outOrderDto);
+    log.trace("Request body orderDTO {}", deliveryOrderDTO);
+    DeliveryOrderDTO outDeliveryOrderDto = orderService.updateOrder(id, deliveryOrderDTO);
+    return orderAssembler.toModel(outDeliveryOrderDto);
   }
 
   @Override

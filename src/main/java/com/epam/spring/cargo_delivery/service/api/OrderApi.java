@@ -1,6 +1,6 @@
 package com.epam.spring.cargo_delivery.service.api;
 
-import com.epam.spring.cargo_delivery.controller.dto.OrderDTO;
+import com.epam.spring.cargo_delivery.controller.dto.DeliveryOrderDTO;
 import com.epam.spring.cargo_delivery.controller.dto.group.OnCreate;
 import com.epam.spring.cargo_delivery.controller.dto.group.OnUpdate;
 import com.epam.spring.cargo_delivery.controller.model.OrderModel;
@@ -28,7 +28,7 @@ public interface OrderApi {
   @ApiOperation("Get all order")
   @ResponseStatus(HttpStatus.OK)
   @GetMapping
-  List<OrderDTO> getAllOrders();
+  List<DeliveryOrderDTO> getAllOrders();
 
   @ApiImplicitParams({
       @ApiImplicitParam(name = "id", paramType = "path", required = true, value = "Order id")
@@ -41,7 +41,7 @@ public interface OrderApi {
   @ApiOperation("Create order")
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping
-  OrderModel createOrder(@RequestBody @Validated(OnCreate.class) OrderDTO orderDTO);
+  OrderModel createOrder(@RequestBody @Validated(OnCreate.class) DeliveryOrderDTO deliveryOrderDTO);
 
   @ApiImplicitParams({
       @ApiImplicitParam(name = "id", paramType = "path", required = true, value = "Order id")
@@ -50,7 +50,7 @@ public interface OrderApi {
   @ResponseStatus(HttpStatus.OK)
   @PatchMapping(value = "/{id}")
   OrderModel updateOrder(@PathVariable long id,
-      @RequestBody @Validated(OnUpdate.class) OrderDTO orderDTO);
+      @RequestBody @Validated(OnUpdate.class) DeliveryOrderDTO deliveryOrderDTO);
 
   @ApiImplicitParams({
       @ApiImplicitParam(name = "id", paramType = "path", required = true, value = "Order id")

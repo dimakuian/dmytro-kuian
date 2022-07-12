@@ -1,7 +1,7 @@
 package com.epam.spring.cargo_delivery.service.repository;
 
 import com.epam.spring.cargo_delivery.service.model.Invoice;
-import com.epam.spring.cargo_delivery.service.model.enums.InvoiceStatus;
+import com.epam.spring.cargo_delivery.service.model.InvoiceStatus;
 import java.util.List;
 
 public interface InvoiceRepository {
