@@ -9,5 +9,4 @@ public class ShippingStatus {
 
     private Long id;
     private String name;
-
 }
