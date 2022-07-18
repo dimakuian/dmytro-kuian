@@ -13,5 +13,4 @@ public enum InvoiceStatus {
     public String getName() {
         return name().toLowerCase();
     }
-
 }
