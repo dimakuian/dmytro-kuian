@@ -12,11 +12,13 @@ import javax.validation.constraints.Null;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.PositiveOrZero;
 import javax.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Builder
 public class UserDTO {
 
   @Null(groups = OnCreate.class, message = "{common.id.empty}")
