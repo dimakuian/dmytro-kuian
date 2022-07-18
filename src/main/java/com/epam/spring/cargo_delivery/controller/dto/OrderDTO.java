@@ -12,9 +12,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 public class OrderDTO {
 
   @Null(groups = OnCreate.class, message = "{common.id.empty}")

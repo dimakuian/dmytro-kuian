@@ -49,8 +49,8 @@ public class OrderServiceImpl implements OrderService {
 
     orderDTO.setShippingStatus(
         shippingStatusRepository
-            .findByName(ShippingStatusDTO.CREATED.name())
-            .orElseThrow(RuntimeException::new));
+            .findByName(ShippingStatusDTO.CREATED.name().toLowerCase())
+            .orElseThrow(EntityNotFoundException::new));
 
     Long shippingID = orderDTO.getShippingLocality().getId();
     Long deliveryID = orderDTO.getDeliveryLocality().getId();
