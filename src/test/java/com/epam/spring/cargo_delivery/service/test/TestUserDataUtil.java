@@ -19,6 +19,7 @@ public class TestUserDataUtil {
   public static final String EMAIL = "test@mail.com";
   public static final String PHONE = "+380671234567";
   public static final double BALANCE = 0.0;
+  public static final String ROLE_NAME = "client";
 
 
   public static Role createClientRole() {

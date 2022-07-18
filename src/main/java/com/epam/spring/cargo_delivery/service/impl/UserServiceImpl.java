@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
     }
 
     userDTO.setRole(
-        roleRepository.findByName(RoleDTO.CLIENT.name())
+        roleRepository.findByName(RoleDTO.CLIENT.name().toLowerCase())
             .orElseThrow(EntityNotFoundException::new)
     );
 
@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
   public void deleteUser(long id) {
     log.info("Start deleting user for id {}", id);
     if (!userRepository.existsById(id)) {
-      throw new RuntimeException("Can not find this user!");
+      throw new EntityNotFoundException();
     }
     log.info("Deleted user by id {}", id);
     userRepository.deleteById(id);
