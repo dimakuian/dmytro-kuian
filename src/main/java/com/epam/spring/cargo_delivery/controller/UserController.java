@@ -2,7 +2,6 @@ package com.epam.spring.cargo_delivery.controller;
 
 import com.epam.spring.cargo_delivery.controller.assembler.UserAssembler;
 import com.epam.spring.cargo_delivery.controller.dto.UserDTO;
-import com.epam.spring.cargo_delivery.controller.dto.group.OnUpdate;
 import com.epam.spring.cargo_delivery.controller.model.UserModel;
 import com.epam.spring.cargo_delivery.service.UserService;
 import com.epam.spring.cargo_delivery.service.api.UserApi;
@@ -11,8 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController

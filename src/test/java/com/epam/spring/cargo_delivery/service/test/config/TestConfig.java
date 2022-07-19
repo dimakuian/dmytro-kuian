@@ -1,6 +1,5 @@
 package com.epam.spring.cargo_delivery.service.test.config;
 
-import com.epam.spring.cargo_delivery.service.repository.UserRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -12,8 +11,6 @@ import org.springframework.plugin.core.SimplePluginRegistry;
 
 @TestConfiguration
 public class TestConfig {
-
-  private UserRepository userRepository;
 
   @Bean
   public LinkDiscoverers discoverers() {

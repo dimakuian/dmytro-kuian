@@ -3,6 +3,7 @@ package com.epam.spring.cargo_delivery.service.impl;
 import static com.epam.spring.cargo_delivery.service.test.util.TestInvoiceDataUtil.CREATION_TIME;
 import static com.epam.spring.cargo_delivery.service.test.util.TestInvoiceDataUtil.ID;
 import static com.epam.spring.cargo_delivery.service.test.util.TestInvoiceDataUtil.INVOICE_STATUS;
+import static com.epam.spring.cargo_delivery.service.test.util.TestInvoiceDataUtil.INVOICE_STATUS_NAME;
 import static com.epam.spring.cargo_delivery.service.test.util.TestInvoiceDataUtil.ORDER;
 import static com.epam.spring.cargo_delivery.service.test.util.TestInvoiceDataUtil.PAID_INVOICE_STATUS;
 import static com.epam.spring.cargo_delivery.service.test.util.TestInvoiceDataUtil.SUM;
@@ -114,7 +115,8 @@ class InvoiceServiceImplTest {
     InvoiceDTO testInvoiceDTO = TestInvoiceDataUtil.createInvoiceDTO();
 
     when(invoiceRepository.save(any())).thenReturn(testInvoice);
-    when(invoiceStatusRepository.findByName(anyString())).thenReturn(Optional.of(INVOICE_STATUS));
+    when(invoiceStatusRepository.findByName(INVOICE_STATUS_NAME)).thenReturn(
+        Optional.of(INVOICE_STATUS));
 
     InvoiceDTO returnInvoiceDTO = invoiceService.createInvoice(testInvoiceDTO);
 
@@ -128,7 +130,7 @@ class InvoiceServiceImplTest {
             hasProperty("invoiceStatus", equalTo(testInvoice.getInvoiceStatus()))));
 
     verify(invoiceRepository, times(1)).save(any());
-    verify(invoiceStatusRepository, times(1)).findByName(anyString());
+    verify(invoiceStatusRepository, times(1)).findByName(INVOICE_STATUS_NAME);
   }
 
   @Test
