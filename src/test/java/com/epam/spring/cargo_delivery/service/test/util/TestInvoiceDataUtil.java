@@ -1,4 +1,4 @@
-package com.epam.spring.cargo_delivery.service.test;
+package com.epam.spring.cargo_delivery.service.test.util;
 
 import com.epam.spring.cargo_delivery.controller.dto.InvoiceDTO;
 import com.epam.spring.cargo_delivery.controller.dto.InvoiceStatusDTO;

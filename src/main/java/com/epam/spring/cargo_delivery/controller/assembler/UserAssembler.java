@@ -14,10 +14,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserAssembler extends RepresentationModelAssemblerSupport<UserDTO, UserModel> {
 
-  public static final String GET_REL = "get_user";
-  public static final String CREATE_REL = "create_user";
-  public static final String UPDATE_REL = "update_user";
-  public static final String DELETE_REL = "delete_user";
+  private static final String GET_REL = "get_user";
+  private static final String CREATE_REL = "create_user";
+  private static final String UPDATE_REL = "update_user";
+  private static final String DELETE_REL = "delete_user";
 
   public UserAssembler() {
     super(UserController.class, UserModel.class);

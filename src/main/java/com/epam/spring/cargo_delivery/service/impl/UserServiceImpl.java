@@ -77,4 +77,10 @@ public class UserServiceImpl implements UserService {
     log.info("Deleted user by id {}", id);
     userRepository.deleteById(id);
   }
+
+  @Override
+  public boolean existByLogin(String login) {
+    log.info("Start existByLogin user for login {}", login);
+    return userRepository.existsByLogin(login);
+  }
 }

@@ -15,4 +15,6 @@ public interface UserService {
   UserDTO updateUser(long id, UserDTO userDTO);
 
   void deleteUser(long id);
+
+  boolean existByLogin(String login);
 }

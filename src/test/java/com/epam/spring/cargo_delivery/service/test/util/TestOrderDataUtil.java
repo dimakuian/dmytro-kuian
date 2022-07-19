@@ -1,4 +1,4 @@
-package com.epam.spring.cargo_delivery.service.test;
+package com.epam.spring.cargo_delivery.service.test.util;
 
 import com.epam.spring.cargo_delivery.controller.dto.OrderDTO;
 import com.epam.spring.cargo_delivery.controller.dto.ShippingStatusDTO;
@@ -7,7 +7,6 @@ import com.epam.spring.cargo_delivery.service.model.Order;
 import com.epam.spring.cargo_delivery.service.model.ShippingStatus;
 import com.epam.spring.cargo_delivery.service.model.User;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -17,7 +16,7 @@ public class TestOrderDataUtil {
   public static final Long ID = 1L;
   public static final Locality SHIPPING_LOCALITY = createShippingLocality();
   public static final Locality DELIVERY_LOCALITY = createDeliveryLocality();
-  public static final Timestamp CREATION_TIME = Timestamp.valueOf(LocalDateTime.now());
+  public static final Timestamp CREATION_TIME = Timestamp.valueOf("2022-07-19 10:24:23");
   public static final User USER = TestUserDataUtil.createUser();
   public static final String CONSIGNEE = "test_consignee";
   public static final String DESCRIPTION = "test_description";
@@ -30,6 +29,8 @@ public class TestOrderDataUtil {
   public static final double FARE = 65.6;
   public static final ShippingStatus SHIPPING_STATUS = createShippingStatus();
   public static final String SHIPPING_STATUS_NAME = "created";
+  public static final Timestamp DELIVERY_DATE = Timestamp.valueOf("2022-07-22 10:00:00");
+
 
   public static Order createOrder() {
     return Order.builder()

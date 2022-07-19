@@ -1,4 +1,4 @@
-package com.epam.spring.cargo_delivery.service.test;
+package com.epam.spring.cargo_delivery.service.test.util;
 
 import com.epam.spring.cargo_delivery.controller.dto.RoleDTO;
 import com.epam.spring.cargo_delivery.controller.dto.UserDTO;
@@ -12,7 +12,7 @@ public class TestUserDataUtil {
 
   public static final Long ID = 1L;
   public static final String LOGIN = "test_login";
-  public static final String PASSWORD = "test_password";
+  public static final String PASSWORD = "test_Password1!";
   public static final Role ROLE = createClientRole();
   public static final String NAME = "test_name";
   public static final String SURNAME = "test_surname";

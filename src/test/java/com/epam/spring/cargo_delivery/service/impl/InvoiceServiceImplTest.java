@@ -1,12 +1,12 @@
 package com.epam.spring.cargo_delivery.service.impl;
 
-import static com.epam.spring.cargo_delivery.service.test.TestInvoiceDataUtil.CREATION_TIME;
-import static com.epam.spring.cargo_delivery.service.test.TestInvoiceDataUtil.ID;
-import static com.epam.spring.cargo_delivery.service.test.TestInvoiceDataUtil.INVOICE_STATUS;
-import static com.epam.spring.cargo_delivery.service.test.TestInvoiceDataUtil.ORDER;
-import static com.epam.spring.cargo_delivery.service.test.TestInvoiceDataUtil.PAID_INVOICE_STATUS;
-import static com.epam.spring.cargo_delivery.service.test.TestInvoiceDataUtil.SUM;
-import static com.epam.spring.cargo_delivery.service.test.TestInvoiceDataUtil.USER;
+import static com.epam.spring.cargo_delivery.service.test.util.TestInvoiceDataUtil.CREATION_TIME;
+import static com.epam.spring.cargo_delivery.service.test.util.TestInvoiceDataUtil.ID;
+import static com.epam.spring.cargo_delivery.service.test.util.TestInvoiceDataUtil.INVOICE_STATUS;
+import static com.epam.spring.cargo_delivery.service.test.util.TestInvoiceDataUtil.ORDER;
+import static com.epam.spring.cargo_delivery.service.test.util.TestInvoiceDataUtil.PAID_INVOICE_STATUS;
+import static com.epam.spring.cargo_delivery.service.test.util.TestInvoiceDataUtil.SUM;
+import static com.epam.spring.cargo_delivery.service.test.util.TestInvoiceDataUtil.USER;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.equalTo;
@@ -27,7 +27,7 @@ import com.epam.spring.cargo_delivery.service.model.Invoice;
 import com.epam.spring.cargo_delivery.service.repository.InvoiceRepository;
 import com.epam.spring.cargo_delivery.service.repository.InvoiceStatusRepository;
 import com.epam.spring.cargo_delivery.service.repository.UserRepository;
-import com.epam.spring.cargo_delivery.service.test.TestInvoiceDataUtil;
+import com.epam.spring.cargo_delivery.service.test.util.TestInvoiceDataUtil;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

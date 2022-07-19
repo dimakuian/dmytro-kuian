@@ -38,14 +38,13 @@ public class UserController implements UserApi {
 
   @Override
   public UserModel createUser(UserDTO userDto) {
-    log.info("Create order {}", userDto);
+    log.info("Create user {}", userDto);
     UserDTO outUserDTO = userService.createUser(userDto);
     return userAssembler.toModel(outUserDTO);
   }
 
   @Override
-  public UserModel updateUser(long id,
-      @RequestBody @Validated(OnUpdate.class) UserDTO userDto) {
+  public UserModel updateUser(long id, UserDTO userDto) {
     log.info("Update user by id {}", id);
     log.trace("Request body userDto {}", userDto);
     UserDTO outUserDTO = userService.updateUser(id, userDto);

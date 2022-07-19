@@ -12,9 +12,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-@Slf4j
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class OrderController implements OrderApi {
 
   private final OrderService orderService;
@@ -35,7 +35,7 @@ public class OrderController implements OrderApi {
 
   @Override
   public OrderModel createOrder(OrderDTO orderDTO) {
-    log.info("Create order {}", orderDTO);
+    log.info("Create order : {}", orderDTO);
     OrderDTO outOrderDto = orderService.createOrder(orderDTO);
     return orderAssembler.toModel(outOrderDto);
   }
