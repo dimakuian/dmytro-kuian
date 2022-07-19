@@ -25,7 +25,6 @@ import com.epam.spring.cargo_delivery.controller.model.OrderModel;
 import com.epam.spring.cargo_delivery.service.OrderService;
 import com.epam.spring.cargo_delivery.service.test.config.TestConfig;
 import com.epam.spring.cargo_delivery.service.test.util.TestOrderDataUtil;
-import com.epam.spring.cargo_delivery.service.test.util.TestUserDataUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Arrays;
 import org.junit.jupiter.api.Test;
@@ -214,7 +213,7 @@ class OrderControllerTest {
 
     mockMvc
         .perform(
-            delete("/api/v1/order/" + TestUserDataUtil.ID))
+            delete("/api/v1/order/" + ID))
         .andDo(print())
         .andExpect(status().isNoContent());
   }

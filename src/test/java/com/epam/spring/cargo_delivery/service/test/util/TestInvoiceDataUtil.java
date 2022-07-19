@@ -7,7 +7,6 @@ import com.epam.spring.cargo_delivery.service.model.InvoiceStatus;
 import com.epam.spring.cargo_delivery.service.model.Order;
 import com.epam.spring.cargo_delivery.service.model.User;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -16,7 +15,7 @@ public class TestInvoiceDataUtil {
 
   public static final Long ID = 1L;
   public static final User USER = TestUserDataUtil.createUser();
-  public static final Timestamp CREATION_TIME = Timestamp.valueOf(LocalDateTime.now());
+  public static final Timestamp CREATION_TIME = Timestamp.valueOf("2022-07-19 10:24:23");
   public static final Order ORDER = TestOrderDataUtil.createOrder();
   public static final double SUM = 65.6;
   public static final InvoiceStatus INVOICE_STATUS = createInvoiceStatus();
