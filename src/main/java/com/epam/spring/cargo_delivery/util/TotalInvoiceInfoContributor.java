@@ -19,7 +19,7 @@ public class TotalInvoiceInfoContributor implements InfoContributor {
   @Override
   public void contribute(Builder builder) {
     Map<String, Long> invoiceDetails = Arrays.stream(InvoiceStatusDTO.values())
-        .map(s -> s.name().toLowerCase())
+        .map(Enum::name)
         .collect(Collectors.toMap(String::toLowerCase,
             invoiceRepository::countAllByInvoiceStatusName));
 
