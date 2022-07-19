@@ -103,7 +103,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     User user = invoiceDTO.getUser();
     double currentBalance = user.getBalance();
     user.setBalance(currentBalance - invoiceDTO.getSum());
-    userRepository.save(user);
+    invoiceDTO.setUser(userRepository.save(user));
 
     Invoice invoice = InvoiceMapperImpl.INSTANCE.mapInvoice(invoiceDTO);
     invoice.setInvoiceStatus(

@@ -10,9 +10,11 @@ import java.sql.Timestamp;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Positive;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class InvoiceDTO {
 

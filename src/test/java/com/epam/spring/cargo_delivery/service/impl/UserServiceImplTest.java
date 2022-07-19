@@ -17,6 +17,7 @@ import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.hasProperty;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -141,10 +142,10 @@ class UserServiceImplTest {
   @Test
   void createUserWhenUserAlreadyExistTest() {
     UserDTO testUserDTO = TestUserDataUtil.createUserDTO();
-    when(userRepository.existsByEmail(EMAIL)).thenReturn(true);
+    when(userRepository.existsByEmail(anyString())).thenReturn(true);
 
     assertThrows(RuntimeException.class, () -> userService.createUser(testUserDTO));
-    verify(userRepository, times(1)).existsByEmail(EMAIL);
+    verify(userRepository, times(1)).existsByEmail(anyString());
   }
 
   @Test
@@ -191,7 +192,6 @@ class UserServiceImplTest {
     userService.deleteUser(ID);
     verify(userRepository, times(1)).deleteById(ID);
   }
-
 
   @Test
   void deleteUserWhenUserNotExistTest() {

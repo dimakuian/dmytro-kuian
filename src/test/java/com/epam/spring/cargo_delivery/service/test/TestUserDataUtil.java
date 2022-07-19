@@ -21,7 +21,6 @@ public class TestUserDataUtil {
   public static final double BALANCE = 0.0;
   public static final String ROLE_NAME = "client";
 
-
   public static Role createClientRole() {
     return Role.builder().id(1L).name(RoleDTO.CLIENT.name().toLowerCase()).build();
   }

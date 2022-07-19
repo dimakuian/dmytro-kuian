@@ -71,8 +71,7 @@ class OrderServiceImplTest {
 
     OrderDTO returnOrderDTO = orderService.getOrder(ID);
 
-    assertThat(
-        returnOrderDTO,
+    assertThat(returnOrderDTO,
         allOf(
             hasProperty("id", equalTo(ID)),
             hasProperty("shippingLocality", equalTo(SHIPPING_LOCALITY)),
@@ -94,7 +93,7 @@ class OrderServiceImplTest {
   }
 
   @Test
-  void getOrderTestWhenOrderNotExist() {
+  void getOrderWhenNotExistTest() {
     when(orderRepository.findById(ID)).thenReturn(Optional.empty());
     assertThrows(EntityNotFoundException.class, () -> orderService.getOrder(ID));
 
