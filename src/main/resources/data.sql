@@ -1,29 +1,20 @@
-# Data for role:
-DELETE
-FROM delivery.role;
-INSERT INTO delivery.`role` (id, name)
+INSERT INTO role (id, name)
 VALUES (0, 'admin'),
        (1, 'client');
 
-# Data for invoice status:
-DELETE
-FROM delivery.invoice_status;
-INSERT INTO delivery.`invoice_status` (id, name)
+
+INSERT INTO invoice_status (id, name)
 VALUES (0, 'created'),
        (1, 'paid'),
        (2, 'declined');
 
-# Data for language:
-DELETE
-FROM delivery.language;
-INSERT INTO delivery.language (id, short_name, full_name)
+
+INSERT INTO language (id, short_name, full_name)
 VALUES (1, 'EN', 'English'),
        (2, 'UA', 'Ukraine');
 
-# Data for shipping status:
-DELETE
-FROM delivery.shipping_status;
-INSERT INTO delivery.`shipping_status` (id, name)
+
+INSERT INTO shipping_status (id, name)
 VALUES (0, 'created'),
        (1, 'confirmed'),
        (2, 'paid'),
@@ -32,10 +23,8 @@ VALUES (0, 'created'),
        (5, 'delivered'),
        (6, 'canceled');
 
-# Data for locality:
-DELETE
-FROM delivery.locality;
-INSERT INTO delivery.locality (id, name, latitude, longitude)
+
+INSERT INTO locality (id, name, latitude, longitude)
 VALUES (1, 'Kiev department №1', 50.430152159229465, 30.400358449390378),
        (2, 'Lviv department №2', 49.85580301226521, 24.019571021514157),
        (3, 'Odesa department №3', 46.47743026963285, 30.700937087405833),

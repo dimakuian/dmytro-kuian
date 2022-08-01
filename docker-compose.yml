@@ -1,0 +1,27 @@
+version: '3'
+services:
+  db:
+    image: mysql:latest
+    container_name: mysql_delivery
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: delivery
+    restart: always
+
+  app:
+    image: dmytro-kuian
+    container_name: application
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=root
+      - DATABASE_NAME=delivery
+      - DATABASE_PORT=3306
+    restart: always
+    depends_on:
+      - db
+

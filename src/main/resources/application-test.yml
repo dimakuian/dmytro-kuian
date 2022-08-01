@@ -1,16 +1,15 @@
 spring:
-#  profiles:
-  #    active: test
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
 
   datasource:
-    url: jdbc:mysql://db/delivery
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:h2:mem:delivery;DB_CLOSE_DELAY=-1;INIT=CREATE SCHEMA IF NOT EXISTS DELIVERY
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
   jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
     show-sql: true
     hibernate:
       ddl-auto: create
