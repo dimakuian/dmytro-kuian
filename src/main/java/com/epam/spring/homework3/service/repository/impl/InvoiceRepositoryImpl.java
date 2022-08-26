@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 @Slf4j
 public class InvoiceRepositoryImpl implements InvoiceRepository {
 
